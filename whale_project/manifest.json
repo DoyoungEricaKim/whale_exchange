@@ -1,0 +1,22 @@
+{
+    // 필수
+    "manifest_version": 2 // 고정
+    "name": "안녕 웨일",
+    "version": "1.0.0",
+
+    // 추천
+    "description": "환전 알람",
+    "icons": {...},
+    "default_locale": "ko",
+
+    "sidebar_action": {...}, // 사이드바앱
+
+    // 그 외: 필요한 것을 추가
+    "background": {
+        "scripts": [...],
+        "page": "..."
+    },
+    "content_scripts": [...],
+    "permissions": [...],
+    ...
+}
