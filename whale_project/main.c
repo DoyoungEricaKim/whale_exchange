@@ -3,7 +3,7 @@
 int main(int number) {
   /* code */
   int day, wanted;
-  int rate; //rate는 받아와야 하는 환율
+  int rate; //rate는 받아와야 하는 환율 ghksd
   number=0;
   printf("D-day를 입력하세요\n", );
   scanf("%d", &day);
