@@ -1,23 +1,29 @@
 {
-<<<<<<< HEAD
-    // 필수
-    "manifest_version": 2 // 고정
-    "name": "안녕 웨일",
+    "manifest_version": 2,
+    "name": "환전 알람",
     "version": "1.0.0",
 
-    // 추천
-    "description": "환전 알람",
-    "icons": {...},
+    "description": "환율 예약 알람 서비스",
+    "icons": {
+      "16": "image/icon.png"
+    },
     "default_locale": "ko",
 
-    "sidebar_action": {...}, // 사이드바앱
-
-    // 그 외: 필요한 것을 추가
-    "background": {
-        "scripts": [...],
-        "page": "..."
+    "sidebar_action": {
+      "default_icon": {
+         "16": "image/icon.png"
+      },
+      "default_page": "index.html",
+      "default_title": "EXCHANGE ALARM",
+      "use_navigation_bar": false,
+      "mobile_user_agent": true
     },
-    "content_scripts": [...],
-    "permissions": [...],
-    ...
-}
+
+    "background": {
+        "scripts": [],
+    },
+    "content_scripts": [ {
+      "css": [ "script/content.css" ],
+      }],
+    "permissions": ["tabs", "notifications" ]
+  }
