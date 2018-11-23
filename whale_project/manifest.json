@@ -1,10 +1,12 @@
 {
-    "manifest_version": 2
-    "name": "안녕 웨일",
+    "manifest_version": 2,
+    "name": "환전 알람",
     "version": "1.0.0",
 
-    "description": "환전 알람",
-    "icons": {...},
+    "description": "환율 예약 알람 서비스",
+    "icons": {
+      "16": "image/icon.png"
+    },
     "default_locale": "ko",
 
     "sidebar_action": {
@@ -12,16 +14,17 @@
          "16": "image/icon.png"
       },
       "default_page": "index.html",
-      "default_title": "EXCHANGE ALARM"
+      "default_title": "EXCHANGE ALARM",
+      "use_navigation_bar": false,
+      "mobile_user_agent": true
     },
 
     "background": {
         "scripts": [...],
-        "page": "..."
     },
     "content_scripts": [ {
       "css": [ "script/content.css" ],
       }],
-    "permissions": [...],
+    "permissions": ["tabs", "notifications" ],
    }
 }
