@@ -1,17 +1,60 @@
 <!DOCTYPE html>
-<htm>
+<html>
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
     <title>EXCHANGE ALARM</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/main.css">
   </head>
+
   <body>
     <header>
-     <a href="index.html">목표 환율</a>
-     <a href="check.html">예약 확인</a>
+     <img src="" alt="logo">
+     <h1>환전 알람</h1>
     </header>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js" integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7" crossorigin="anonymous"></script>
+
+    <nav>
+      <a href="index.html">목표 환율</a>
+      <a href="check.html">예약 확인</a>
+    </nav>
+
+    <article>
+
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <label class="input-group-text" for="inputGroupSelect01">외화 선택</label>
+          </div>
+          <select class="custom-select" id="inputGroupSelect01">
+            <option selected>외화</option>
+            <option value="1">미국 USD</option>
+            <option value="2">일본 JPY</option>
+            <option value="3">유럽연합 EUR</option>
+            <option value="3">영국 GBP</option>
+            <option value="4">중국 CNY</option>
+            <option value="5">태국 THB</option>
+            <option value="6">캐나다 CAD</option>
+            <option value="7">호주 AUD</option>
+            <option value="8">홍콩 HKD</option>
+          </select>
+          <div class="input-group-append">
+            <a href="#" class="btn btn-outline-secondary active" role="button" aria-pressed="true">선택</a>
+          </div>
+        </div>
+
+        <form action="check.html" method="post">
+          <input type="number" name="exchangeKRW" value="KRW">
+          <input type="submit" value="Submit">
+        </form>
+
+    </article>
 
 
     <script></script>
   </body>
-</htm>
+</html>
