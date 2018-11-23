@@ -19,7 +19,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js" integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7" crossorigin="anonymous"></script>
 
-    <nav>
+    <nav aria-label="breadcrumb">
       <a href="index.html">목표 환율</a>
       <a href="check.html">예약 확인</a>
     </nav>
@@ -35,12 +35,8 @@
             <option value="1">미국 USD</option>
             <option value="2">일본 JPY</option>
             <option value="3">유럽연합 EUR</option>
-            <option value="3">영국 GBP</option>
             <option value="4">중국 CNY</option>
-            <option value="5">태국 THB</option>
-            <option value="6">캐나다 CAD</option>
-            <option value="7">호주 AUD</option>
-            <option value="8">홍콩 HKD</option>
+          
           </select>
           <div class="input-group-append">
             <a href="#" class="btn btn-outline-secondary active" role="button" aria-pressed="true">선택</a>
@@ -48,7 +44,8 @@
         </div>
 
         <form action="check.html" method="post">
-          <input type="number" name="exchangeKRW" value="KRW">
+
+          <input type="text" name="exchangeKRW" value="KRW">
           <input type="submit" value="Submit">
         </form>
 
