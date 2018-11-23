@@ -18,6 +18,7 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js" integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7" crossorigin="anonymous"></script>
+    <script src="js/main.js"></script>
 
     <nav aria-label="breadcrumb">
       <a href="index.html">목표 환율</a>
@@ -26,32 +27,31 @@
 
     <article>
 
-        <div class="input-group mb-3">
-          <div class="input-group-prepend">
-            <label class="input-group-text" for="inputGroupSelect01">외화 선택</label>
+        <div class="ForeignCurrency">
+          <div class="ForeignCurrencySelect">
+            <label class="input-group-text" for="selectCur">외화 선택</label>
           </div>
-          <select class="custom-select" id="inputGroupSelect01">
+
+          <select class="custom-select" id="selectCur" onchange="selectCur()">
             <option selected>외화</option>
-            <option value="1">미국 USD</option>
-            <option value="2">일본 JPY</option>
-            <option value="3">유럽연합 EUR</option>
-            <option value="4">중국 CNY</option>
-          
+            <option value="USD">미국 USD</option>
+            <option value="JPY">일본 JPY</option>
+            <option value="EUR">유럽연합 EUR</option>
+            <option value="CNY">중국 CNY</option>
           </select>
+
           <div class="input-group-append">
             <a href="#" class="btn btn-outline-secondary active" role="button" aria-pressed="true">선택</a>
           </div>
         </div>
 
         <form action="check.html" method="post">
-
-          <input type="text" name="exchangeKRW" value="KRW">
+          <input type="text" id="ForeignCur" value="" disabled>
+          <input type="text" id="exchangeKRW" value="KRW">
           <input type="submit" value="Submit">
         </form>
 
     </article>
 
-
-    <script></script>
   </body>
 </html>
