@@ -20,11 +20,10 @@
     },
 
     "background": {
-        "scripts": [...],
+        "scripts": [],
     },
     "content_scripts": [ {
       "css": [ "script/content.css" ],
       }],
-    "permissions": ["tabs", "notifications" ],
-   }
-}
+    "permissions": ["tabs", "notifications" ]
+  }
