@@ -18,3 +18,20 @@ function selectCur() {
     document.getElementById("ForeignCur").value = CNY + "  " + _CNY;
   }
 }
+
+function CountDays(){
+        var dDay = new Date(document.getElementById("D-day").value);
+        var startDay = new Date(document.getElementById("start_day").value);
+        if(dDay - startDay > 0){
+          return parseInt((dDay - startDay) / (24 * 3600 * 1000));
+        }
+        else{
+          return null;   // error 메시지 출력용
+        }
+}
+
+function cal(){
+if(document.getElementById("D-day")){
+    document.getElementById("calcDays2").value = CountDays();
+}
+}
