@@ -62,3 +62,34 @@ function cal(){
 if(document.getElementById("D-day")){
     document.getElementById("calcDays2").value = CountDays();}
 }
+
+function mainfunc(countNum, ecRate, wantRate){
+  var count = 0;
+  var success = false;
+
+  while(count < countNum){
+    success = false;
+    count++;
+    if(ecRate == wantRate){
+      //알람기능1
+      success = true;
+      break;
+    }
+
+    if(count == countNum-2){
+      if(ecRate==wantRate){
+        //알람 기능1
+        success = true;
+        break;
+      }
+      else{
+        //alarm2
+      }
+    }
+  }
+  if(success == false){
+    //alarm3
+  }
+  clearAll(); //모든 설정 초기화
+  return;
+}
