@@ -26,7 +26,7 @@
     </nav>
 
     <article>
-      
+
         <div class="ForeignCurrency">
           <div class="ForeignCurrencySelect">
             <label class="input-group-text" for="selectCur">외화 선택</label>
@@ -41,22 +41,38 @@
           </select>
         </div>
 
-        <h2>시간 설정</h2>
-        <div id="calendar_form">
-          <div id="start_date"><p><label class="form">시작일:</label><input type="date" class="textbox" id="start_day" name="start_date" onchange="cal()"</p></div>
-          <div id="deadline"><p><label class="form">D-day:</label><input type="date" class="textbox" id="D-day" name="deadline" onchange="cal()"/></p></div>
-          <div id="calcDays"><label class="form">D-day까지 남은 일:</label><input type="text" class="textbox" id="calcDays2" name="calcDays"/></div>
-        </div>
+        <p id = "_date"></P>
 
         <form action="check.html" method="post">
-          <input type="text" id="ForeignCur" value="" disabled>
-          <input type="text" id="exchangeKRW" value="KRW">
-          <input type="submit" value="Submit">
+          <div id="foreignCurresult_form"><p class="form">현재 환율</p>
+            <input type="text" id="ForeignCur" value="" disabled>
+            <img src="" alt=" = ">
+            <input type="text" id="exchangeKRW" value="KRW">
+          </div>
+<p> = 은 png 파일로 삽입 하기 </p>
+
+          <h2>기간 설정</h2>
+          <script>
+            var tt = callToday();
+          </script>
+          <div id="calendar_form" value="callToday()">
+            <div id="start_date"><p><label class="form">시작일:</label>
+              <input type="date" class="textbox" id="start_day" name="start_date" min="tt" onchange="cal()"</p></div>
+            <div id="deadline"><p><label class="form">D-day:</label>
+              <input type="date" class="textbox" id="D-day" name="deadline" min="tt" onchange="cal()"></p></div>
+
+              <!--나중에는 안보이게 할 데이터 D-day까지 남은 일 !-->
+
+            <div id="calcDays"><label class="form">D-day까지 남은 일:</label>
+              <input type="text" class="textbox" id="calcDays2" name="calcDays"></div>
+          </div>
+
+          <input type="submit" value="제출">
         </form>
 
     </article>
 
 
-    <script></script>
+
   </body>
 </html>
