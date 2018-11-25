@@ -45,13 +45,18 @@
 
         <form action="check.html" method="post">
           <div id="foreignCurresult_form"><p class="form">현재 환율</p>
-            <input type="text" id="ForeignCur" value="" disabled>
+            <input type="text" id="ForeignCur" value="외화 환율" disabled>
             <img src="" alt=" = ">
             <input type="text" id="exchangeKRW" value="KRW">
           </div>
-<p> = 은 png 파일로 삽입 하기 </p>
+          <p> = 은 png 파일로 삽입 하기 </p>
+          <div id="want_form"><p class="form">희망 환율</p>
+            <input type="text" id="ForeignCur1" placeholder="외화 환율" disabled>
+            <br>
+            <input type="text" id="wantKRW" name="KRWwant" placeholder="희망 환율 입력">
+          </div>
 
-          <h2>기간 설정</h2>
+          <h3>기간 설정</h3>
           <script>
             var tt = callToday();
           </script>
@@ -66,9 +71,10 @@
             <div id="calcDays"><label class="form">D-day까지 남은 일:</label>
               <input type="text" class="textbox" id="calcDays2" name="calcDays"></div>
           </div>
-
-          <input type="submit" value="제출">
+<!--
+         <input type="submit" value="제출">   !-->
         </form>
+        <button onclick="location.href='confirm.html'">확인</button>
 
     </article>
 

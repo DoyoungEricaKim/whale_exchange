@@ -12,7 +12,7 @@ function callToday(){
   }
   today = yyyy+ '-' + mm + '-' + dd;
 //  document.write(today); 현재는 제대로 돌아가는지 확인용으로 넣어둠 이후에 삭제!!
-  return today;
+  return parseInt(today);
 }
 
 function selectCur() {
@@ -27,12 +27,16 @@ function selectCur() {
   var option = document.getElementById("selectCur").value;
   if(option == "USD") {
     document.getElementById("ForeignCur").value = USD + "  " + _USD;
+    document.getElementById("ForeignCur1").value = USD + "  " + _USD;
   } else if (option == "JPY") {
     document.getElementById("ForeignCur").value = JPY + "  " + _JPY;
+    document.getElementById("ForeignCur1").value = JPY + "  " + _JPY;
   } else if (option == "EUR") {
     document.getElementById("ForeignCur").value = EUR + "  " + _EUR;
+    document.getElementById("ForeignCur1").value = EUR + "  " + _EUR;
   } else if (option == "CNY") {
     document.getElementById("ForeignCur").value = CNY + "  " + _CNY;
+    document.getElementById("ForeignCur1").value = CNY + "  " + _CNY;
   }
 }
 
@@ -41,7 +45,7 @@ function CountDays(){
   var dDay = new Date(document.getElementById("D-day").value);
   var t = new callToday();
   //while(dDay > t && startDay >= t){
-    if(dDay > startDady ){
+    if( dDay - startDay > 0 ){
      return parseInt((dDay - startDay) / (24 * 3600 * 1000));
     }
     else{
