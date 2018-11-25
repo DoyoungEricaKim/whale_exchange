@@ -57,22 +57,12 @@
           </div>
 
           <h3>기간 설정</h3>
-          <script>
-            var tt = callToday();
-          </script>
-          <div id="calendar_form" value="callToday()">
-            <div id="start_date"><p><label class="form">시작일:</label>
-              <input type="date" class="textbox" id="start_day" name="start_date" min="tt" onchange="cal()"</p></div>
+          <div id="calendar_form">
             <div id="deadline"><p><label class="form">D-day:</label>
-              <input type="date" class="textbox" id="D-day" name="deadline" min="tt" onchange="cal()"></p></div>
+              <input type="date" id="pdate" name="deadline" onchange="countCheck()"></p></div>
+          
 
-              <!--나중에는 안보이게 할 데이터 D-day까지 남은 일 !-->
-
-            <div id="calcDays"><label class="form">D-day까지 남은 일:</label>
-              <input type="text" class="textbox" id="calcDays2" name="calcDays"></div>
-          </div>
-<!--
-         <input type="submit" value="제출">   !-->
+<!--         <input type="submit" value="제출">   !-->
         </form>
         <button onclick="location.href='confirm.html'">확인</button>
 

@@ -1,19 +1,3 @@
-function callToday(){
-  var today = new Date();
-  var dd = today.getDate();
-  var mm = today.getMonth()+1; //January is 0!
-  var yyyy = today.getFullYear();
-
-  if(dd<10) {
-      dd = '0'+dd;
-  }
-  if(mm<10) {
-      mm = '0'+mm;
-  }
-  today = yyyy+ '-' + mm + '-' + dd;
-//  document.write(today); 현재는 제대로 돌아가는지 확인용으로 넣어둠 이후에 삭제!!
-  return parseInt(today);
-}
 
 function selectCur() {
   var USD = "USD";
@@ -44,23 +28,14 @@ function selectCur() {
   }
 }
 
-function CountDays(){
-  var startDay = new Date(document.getElementById("start_day").value);
-  var dDay = new Date(document.getElementById("D-day").value);
-  var t = new callToday();
-  //while(dDay > t && startDay >= t){
-    if( dDay - startDay > 0 ){
-     return parseInt((dDay - startDay) / (24 * 3600 * 1000));
-    }
-    else{
-     return null;
-    }
-//        }
-} // alert 누르면 다시 calendar 기간 설정하도록 반복문 추가하기
-
-function cal(){
-if(document.getElementById("D-day")){
-    document.getElementById("calcDays2").value = CountDays();}
+function countCheck() {
+  var s = document.getElementById("pdate").value;
+  var theday = new Date(s);
+  var today = new Date();
+  var diff = theday.getTime() -  today.getTime();
+  var days = Math.floor(diff/(1000*60*60*24) + 1);
+  document.write(days); //이거로 돌아가는지 확인하는 용
+  return days;
 }
 
 function mainfunc(countNum, ecRate, wantRate){
