@@ -28,15 +28,19 @@ function selectCur() {
   if(option == "USD") {
     document.getElementById("ForeignCur").value = USD + "  " + _USD;
     document.getElementById("ForeignCur1").value = USD + "  " + _USD;
+    $.get("https://free.currencyconverterapi.com/api/v5/convert?q=USD_KRW&compact=y", setData);
   } else if (option == "JPY") {
     document.getElementById("ForeignCur").value = JPY + "  " + _JPY;
     document.getElementById("ForeignCur1").value = JPY + "  " + _JPY;
+    $.get("https://free.currencyconverterapi.com/api/v5/convert?q=JPY_KRW&compact=y", setData);
   } else if (option == "EUR") {
     document.getElementById("ForeignCur").value = EUR + "  " + _EUR;
     document.getElementById("ForeignCur1").value = EUR + "  " + _EUR;
+    $.get("https://free.currencyconverterapi.com/api/v5/convert?q=EUR_KRW&compact=y", setData);
   } else if (option == "CNY") {
     document.getElementById("ForeignCur").value = CNY + "  " + _CNY;
     document.getElementById("ForeignCur1").value = CNY + "  " + _CNY;
+    $.get("https://free.currencyconverterapi.com/api/v5/convert?q=CNY_KRW&compact=y", setData);
   }
 }
 
