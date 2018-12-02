@@ -41,9 +41,7 @@
           </select>
         </div>
 
-        <p id = "_date"></P>
-
-        <form action="check.html" onsubmit="" method="post">
+        <form action="check.html" method="post">
           <div id="foreignCurresult_form"><p class="form">현재 환율</p>
             <input type="text" id="ForeignCur" value="외화 환율" disabled>
             <img src="" alt=" = ">
@@ -56,20 +54,29 @@
             <input type="text" id="wantKRW" name="KRWwant" placeholder="희망 환율 입력">
           </div>
 
+
           <h3>기간 설정</h3>
           <div id="calendar_form">
             <div id="deadline"><p><label class="form">D-day:</label>
               <input type="date" id="pdate" name="deadline" onchange="countCheck()"></p></div>
+              <script>
+              document.getElementById('pdate').min = new Date().toISOString().substring(0, 10);
+              </script>
           </div>
 
-
+          <h3>알람 주기 선택</h3>
+          <div id="checkbox_form">
+            <input type="radio" name="term1" value="per1">매일<br>
+            <input type="radio" name="term1" value="per3"> 3일 마다<br>
+            <input type="radio" name="term1" value="per7">일주일 마다<br>
+          </div>
     <!--    <input type="submit" value="제출"> !-->
         </form>
+        <br>
 
         <button onclick="location.href='confirm.html'">확인</button>
 
     </article>
-
 
 
   </body>

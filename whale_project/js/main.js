@@ -34,37 +34,24 @@ function countCheck() {
   var today = new Date();
   var diff = theday.getTime() -  today.getTime();
   var days = Math.floor(diff/(1000*60*60*24) + 1);
-  //document.write(days); //이거로 돌아가는지 확인하는 용
   return days;
 }
-
 
 function mainfunc(countNum, ecRate, wantRate){
   var count = 0;
   var success = false;
 
   while(count < countNum){
-    success = false;
+//    success = false;
     count++;
     if(ecRate == wantRate){
       //알람기능1
       success = true;
       break;
     }
-
-    if(count == countNum-2){
-      if(ecRate == wantRate){
-        //알람 기능1
-        success = true;
-        break;
-      }
-      else{
-        //alarm2
-      }
-    }
   }
   if(success == false){
-    //alarm3
+    //alarm2
   }
   clearAll(); //모든 설정 초기화
   return;
