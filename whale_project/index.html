@@ -6,8 +6,10 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
     <title>EXCHANGE ALARM</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
-    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="css/main.css">
+z    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
   </head>
 
   <body>
@@ -17,7 +19,6 @@
     </header>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js" integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7" crossorigin="anonymous"></script>
     <script src="js/main.js"></script>
 
     <nav aria-label="breadcrumb">
@@ -45,7 +46,7 @@
           <div id="foreignCurresult_form"><p class="form">현재 환율</p>
             <input type="text" id="ForeignCur" value="외화 환율" disabled>
             <img src="" alt=" = ">
-            <input type="text" id="exchangeKRW" value="KRW">
+            <div id="exchangeKRW" value="KRW"></div>
           </div>
           <p> = 은 png 파일로 삽입 하기 </p>
           <div id="want_form"><p class="form">희망 환율</p>
@@ -77,7 +78,7 @@
         <button onclick="location.href='confirm.html'">확인</button>
 
     </article>
-
+<div id="test"></div>
 
   </body>
 </html>

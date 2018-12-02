@@ -37,6 +37,18 @@ function countCheck() {
   return days;
 }
 
+function setData(data, status){
+  var test = $("#exchangeKRW");
+  var curstr = JSON.stringify(data['USD_KRW']['val']);
+  test.html(curstr);
+  var curstr2 = JSON.stringify(data['JPY_KRW']['val']);
+  test.html(curstr2);
+  var curstr3 = JSON.stringify(data['EUR_KRW']['val']);
+  test.html(curstr3);
+  var curstr4 = JSON.stringify(data['CNY_KRW']['val']);
+  test.html(curstr4);
+}
+
 function mainfunc(countNum, ecRate, wantRate){
   var count = 0;
   var success = false;
