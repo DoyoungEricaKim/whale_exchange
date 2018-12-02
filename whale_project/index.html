@@ -3,75 +3,89 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
 
     <title>EXCHANGE ALARM</title>
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/datatables.min.css">
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <script src="js/jquery.min.js"></script>
+    <script src="js/datatables.min.js" type="text/javascript"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/sidebar.js"></script>
   </head>
 
   <body>
+
     <header>
      <img src="" alt="logo">
      <h1>환전 알람</h1>
     </header>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script src="js/main.js"></script>
-
     <nav aria-label="breadcrumb">
-      <a href="index.html">목표 환율</a>
-      <a href="check.html">예약 확인</a>
+      <a id="id_reserv" href="index.html">목표 환율</a>
+      <a id="id_check" href="check.html">예약 확인</a>
     </nav>
 
     <article>
+      <div id="reserv_rate_form" class="sheet reserv_rate_form">
 
-        <div class="ForeignCurrency">
-          <div class="ForeignCurrencySelect">
-            <label class="input-group-text" for="selectCur">외화 선택</label>
+          <div id="ForeignCurrency" class="form_group">
+            <div class="ForeignCurrencySelect">
+              <p class="form" for="selectCur">외화 선택</p>
+            </div>
+            <select class="ex-input ex-input--default" id="selectCur" onchange="selectCur()">
+              <option selected>외화</option>
+              <option value="USD">미국 USD</option>
+              <option value="JPY">일본 JPY</option>
+              <option value="EUR">유럽연합 EUR</option>
+              <option value="CNY">중국 CNY</option>
+            </select>
           </div>
 
-          <select class="custom-select" id="selectCur" onchange="selectCur()">
-            <option selected>외화</option>
-            <option value="USD">미국 USD</option>
-            <option value="JPY">일본 JPY</option>
-            <option value="EUR">유럽연합 EUR</option>
-            <option value="CNY">중국 CNY</option>
-          </select>
-        </div>
+          <form class="reservform" action="check.html" method="post">
 
-        <form action="check.html" method="post">
-          <div id="foreignCurresult_form"><p class="form">현재 환율</p>
-            <input type="text" id="ForeignCur" value="외화 환율" disabled>
-            <img src="" alt=" = ">
-            <div id="exchangeKRW" value="KRW"></div>
-          </div>
-          <div id="want_form"><p class="form">희망 환율</p>
-            <input type="text" id="ForeignCur1" placeholder="외화 환율" disabled>
-            <br>
-            <input type="text" id="wantKRW" name="KRWwant" placeholder="희망 환율 입력" required>
-          </div>
+            <div id="foreignCurresult_form">
+              <p class="form">현재 환율</p>
+              <input type="text" id="ForeignCur" value="외화 환율" disabled>
+              <img src="" alt=" = ">
+              <div id="exchangeKRW" value="KRW"></div>
+            </div>
 
-          <h3>기간 설정</h3>
-          <div id="calendar_form">
-            <div id="deadline"><p><label class="form">D-day:</label>
-              <input type="date" id="pdate" name="deadline" onchange="countCheck()" required></p></div>
+            <div class="form_group">
+              <p class="form">희망 환율</p>
+              <input type="text" id="ForeignCur1" placeholder="외화 환율" disabled>
+              <br>
+              <input type="text" id="wantKRW" class="ex-input ex-input--default"
+                name="KRWwant" placeholder="희망 환율 입력" required />
+            </div>
+
+            <div id="calendar_form" class="form_group">
+              <p class="form">기간 설정</p>
+              <div id="deadline">
+                <label class="form">D-day:</label>
+                <input type="date" id="pdate" name="deadline"
+                  class="ex-input ex-input--default" onchange="countCheck()" required />
+              </div>
               <script>
-              document.getElementById('pdate').min = new Date().toISOString().substring(0, 10);
+                document.getElementById('pdate').min = new Date().toISOString().substring(0, 10);
               </script>
-          </div>
+            </div>
 
-          <h3>알람 주기 선택</h3>
-          <div id="radio_form">
-            <input type="radio" name="term1" value="per1" required>매일<br>
-            <input type="radio" name="term1" value="per3" required> 3일 마다<br>
-            <input type="radio" name="term1" value="per7" required>일주일 마다<br>
-          </div>
-          <input type ="submit" value="확인"> <!-- onclick="location.href='confirm.html'" !-->
-        </form>
-        <br>
+            <div id="radio_form" class="form_group">
+              <p class="form">알람 주기 선택</p>
+              <input type="radio" name="term1" value="per1" class="ex-input ex-input--default" required>매일<br>
+              <input type="radio" name="term1" value="per3" class="ex-input ex-input--default" required> 3일 마다<br>
+              <input type="radio" name="term1" value="per7" class="ex-input ex-input--default" required>일주일 마다<br>
+            </div>
+            <div class="form_group">
+              <button id="id_complete_button" type="submit"
+                class="success ex- btn--large ex-btn--primary">확인
+              </button>
+            </div>
+         <!-- onclick="location.href='confirm.html'" !-->
+          </form>
+      </div>
 
     </article>
 
