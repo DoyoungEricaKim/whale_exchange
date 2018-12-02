@@ -68,7 +68,19 @@
                   class="ex-input ex-input--default" onchange="countCheck()" required />
               </div>
               <script>
-                document.getElementById('pdate').min = new Date().toISOString().substring(0, 10);
+                var tmp = new Date();
+                var day = tmp.getDate();
+                var month = tmp.getMonth() + 1;
+                var year = tmp.getFullYear();
+                if(day < 10) {
+                  day = '0'+day;
+                }
+                if(month<10) {
+                  month = '0'+month;
+                }
+                tmp = year+ '-' + month + '-' + day;
+                document.getElementById('pdate').min = tmp;
+
               </script>
             </div>
 
