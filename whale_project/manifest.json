@@ -8,13 +8,12 @@
       "16": "image/icon.png"
     },
     "default_locale": "ko",
-
     "sidebar_action": {
       "default_icon": {
          "16": "image/icon.png"
       },
       "default_page": "index.html",
-      "default_title": "EXCHANGE ALARM",
+      "default_title": "환전 알람",
       "use_navigation_bar": false,
       "mobile_user_agent": true
     },
