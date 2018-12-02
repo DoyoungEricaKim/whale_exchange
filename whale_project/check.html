@@ -5,18 +5,40 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title></title>
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
-  </head>
+    <title>EXCHANGE ALARM</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/datatables.min.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/datatables.min.js" type="text/javascript"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/sidebar.js"></script>
+    </head>
   <body>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js" integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7" crossorigin="anonymous"></script>
+    <header>
 
-
+    </header>
     <nav>
       <a href="index.html">목표 환율</a>
       <a href="check.html">예약 확인</a>
     </nav>
+    <article>
+
+      <table id="sheet" class="sheettable">
+        <thead>
+          <tr>
+            <th width="4%">
+              #
+            </th>
+            <th id="id_cou1" colspan="2"></th>
+          </tr>
+        </thead>
+        <tbody id="sheet-body">
+        </tbody>
+      </table>
+      <button id="id_Clearall"></button>
+      
+    </article>
   </body>
 </html>
