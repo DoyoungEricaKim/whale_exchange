@@ -48,34 +48,30 @@ z    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
             <img src="" alt=" = ">
             <div id="exchangeKRW" value="KRW"></div>
           </div>
-          <p> = 은 png 파일로 삽입 하기 </p>
           <div id="want_form"><p class="form">희망 환율</p>
             <input type="text" id="ForeignCur1" placeholder="외화 환율" disabled>
             <br>
-            <input type="text" id="wantKRW" name="KRWwant" placeholder="희망 환율 입력">
+            <input type="text" id="wantKRW" name="KRWwant" placeholder="희망 환율 입력" required>
           </div>
-
 
           <h3>기간 설정</h3>
           <div id="calendar_form">
             <div id="deadline"><p><label class="form">D-day:</label>
-              <input type="date" id="pdate" name="deadline" onchange="countCheck()"></p></div>
+              <input type="date" id="pdate" name="deadline" onchange="countCheck()" required></p></div>
               <script>
               document.getElementById('pdate').min = new Date().toISOString().substring(0, 10);
               </script>
           </div>
 
           <h3>알람 주기 선택</h3>
-          <div id="checkbox_form">
-            <input type="radio" name="term1" value="per1">매일<br>
-            <input type="radio" name="term1" value="per3"> 3일 마다<br>
-            <input type="radio" name="term1" value="per7">일주일 마다<br>
+          <div id="radio_form">
+            <input type="radio" name="term1" value="per1" required>매일<br>
+            <input type="radio" name="term1" value="per3" required> 3일 마다<br>
+            <input type="radio" name="term1" value="per7" required>일주일 마다<br>
           </div>
-    <!--    <input type="submit" value="제출"> !-->
+          <input type ="submit" value="확인"> <!-- onclick="location.href='confirm.html'" !-->
         </form>
         <br>
-
-        <button onclick="location.href='confirm.html'">확인</button>
 
     </article>
 
