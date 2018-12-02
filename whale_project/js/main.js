@@ -34,9 +34,10 @@ function countCheck() {
   var today = new Date();
   var diff = theday.getTime() -  today.getTime();
   var days = Math.floor(diff/(1000*60*60*24) + 1);
-  document.write(days); //이거로 돌아가는지 확인하는 용
+  //document.write(days); //이거로 돌아가는지 확인하는 용
   return days;
 }
+
 
 function mainfunc(countNum, ecRate, wantRate){
   var count = 0;
@@ -52,7 +53,7 @@ function mainfunc(countNum, ecRate, wantRate){
     }
 
     if(count == countNum-2){
-      if(ecRate==wantRate){
+      if(ecRate == wantRate){
         //알람 기능1
         success = true;
         break;
