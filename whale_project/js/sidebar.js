@@ -1,7 +1,6 @@
 
 
 function initialize(){
-
   country = $('#selectCur').val()
   wantRate = $('#wantKRW').val()
   period = $('pdate').val()
