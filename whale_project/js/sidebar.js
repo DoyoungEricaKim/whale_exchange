@@ -6,20 +6,23 @@
   var term = $("#alarmterm").find("[name=term1]:checked").val();
   var form = document.querySelector('form');
 
-  var id = reservlist.length + 1;
+
   var info = [country, wantRate, period, term];
-//  var jsonfile = JSON.stringify(info);
-  var jsonverb =  {};
+
+  var jsonfile = JSON.stringify(info);
+  var jsonverb = {};
+  var id = jsonverb.length + 1;
   jsonverb[id] = info;
-form.addEventListener('submit', function(evt){
+  form.addEveontListener('change', function(evt){
   var value = jsonverb;
+  alert(jsonfile);
   evt.preventDefault();
   whale.storage.sync.set("jsonverb", function() {
     console.log('Value is set to ' + value);
   });
 });
 
-  whale.storage.sync.get(['id'], function(result) {
+  whale.storage.sync.get("id", function(result) {
     console.log('Value currently is ' + result.id);
   });
 })();
