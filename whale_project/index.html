@@ -24,7 +24,7 @@
     <article>
       <div id="reserv_rate_form" class="sheet reserv_rate_form">
 
-          <form class="reservform">
+          <form id="reservform" onclick="myFunction()">
             <div id="ForeignCurrency" class="form_group">
               <div class="ForeignCurrencySelect">
                 <p class="form" for="selectCur">외화 선택</p>
@@ -69,11 +69,9 @@
               <input type="radio" id=alarmterm name="term1" value="per7" class="ex-input ex-input--default" required>일주일 마다<br>
             </div>
             <div class="form_group">
-              <button id="id_complete_button" type="submit"
-                class="success ex- btn--large ex-btn--primary">확인
-              </button>
+              <input id="id_complete_button" type="submit" value="확인">
+              </input>
             </div>
-            <p id="demo"></p>
          <!-- onclick="location.href='confirm.html'" !-->
           </form>
       </div>

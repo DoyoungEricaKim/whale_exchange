@@ -23,18 +23,14 @@
     selectCur();
   })
 
-
-  var toConfirmPage = document.getElementById("id_complete_button");
-  toConfirmPage.addEventListener('click', function() {
-    var formCheck = $("#reservform");
-    if(formCheck.checkValidity()) {
-    //initialize();
+  var toConfirmPage = document.getElementById("reservform");
+  toConfirmPage.addEventListener('submit', function(evt) {
+    //var formCheck = $("#reservform");
       alert("hey it works");
-      formCheck.find('[type="button"]').trigger('click');
+      evt.preventDefault();
+      //formCheck.find("#id_complete_button").trigger('click');
       window.location.href= "confirm.html"
-    } else {
-      alert("That's no no")
-    }
+      alert("That's no no");
   })
 
 /* wantKRW 받아 올때 쓸 addEventListener
@@ -42,6 +38,11 @@
   test2.addEventListener('change', selectCur())
 */
 })()
+
+function myFunction() {
+  alert("hey");
+  window.location.href= "confirm.html"
+}
 
 function selectCur() {
   var USD = "USD";

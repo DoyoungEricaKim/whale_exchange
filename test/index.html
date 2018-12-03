@@ -1,21 +1,14 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  </head>
 <body>
-  <input type="button" id = "hw" value="Hello world" />
-  <input type="text" id = "text" value="Hello" />
 
-  <select class="ex-input ex-input--default" id="selectCur">
-    <option selected>외화</option>
-    <option value="USD">미국 USD</option>
-    <option value="JPY">일본 JPY</option>
-    <option value="EUR">유럽연합 EUR</option>
-    <option value="CNY">중국 CNY</option>
-  </select>
+<p>When you submit the form, a function is triggered which alerts some text.</p>
+
+<form id = "hw">
+  Enter name: <input id = "text" type="text" required name="fname">
+  <input id = "btn" type="submit" value="Submit">
+</form>
 
 </body>
-<script src="background.js" ></script>
-
+<script src="background.js"></script>
 </html>
