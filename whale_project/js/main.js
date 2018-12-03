@@ -17,7 +17,14 @@
     event.preventDefault()
     window.location.href = "check.html"
   })
-
+  $('#conf').on('click', (event) => {
+    event.preventDefault()
+    window.location.href = "index.html"
+  })
+  $('#checkinfo').on('click', (event) => {
+    event.preventDefault()
+    window.location.href = "check.html"
+  })
   var callSelectCur = document.getElementById("selectCur");
   callSelectCur.addEventListener('change', function() {
     selectCur();
@@ -38,11 +45,6 @@
   test2.addEventListener('change', selectCur())
 */
 })()
-
-function myFunction() {
-  alert("hey");
-  window.location.href= "confirm.html"
-}
 
 function selectCur() {
   var USD = "USD";
