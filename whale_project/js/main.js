@@ -12,7 +12,6 @@
   $('#id_reserv').on('click', (event) => {
     event.preventDefault()
     window.location.href = "index.html"
-    alert("id_reserv selected!");
   })
   $('#id_check').on('click', (event) => {
     event.preventDefault()
@@ -22,6 +21,20 @@
   var callSelectCur = document.getElementById("selectCur");
   callSelectCur.addEventListener('change', function() {
     selectCur();
+  })
+
+
+  var toConfirmPage = document.getElementById("id_complete_button");
+  toConfirmPage.addEventListener('click', function() {
+    var formCheck = $("#reservform");
+    if(formCheck.checkValidity()) {
+    //initialize();
+      alert("hey it works");
+      formCheck.find('[type="button"]').trigger('click');
+      window.location.href= "confirm.html"
+    } else {
+      alert("That's no no")
+    }
   })
 
 /* wantKRW 받아 올때 쓸 addEventListener
@@ -113,7 +126,7 @@ function mainfunc(reserveDay, ecRate, wantRate){
   document.write(dDay);
   if(dDay > 0){
     if(ecRate == wantRate){
-      //알람기능1
+z      //알람기능1
       success = true;
       break;
     }
@@ -133,4 +146,29 @@ function mainfunc(reserveDay, ecRate, wantRate){
   }
   clearAll(); //모든 설정 초기화
   return;
+}
+
+function initialize(){
+  var country = $('#selectCur').val()
+  var wantRate = $('#wantKRW').val()
+  var period = $('#pdate').val()
+  var term = $('#alarmterm').val()
+
+  var id = reservlist.length + 1;
+  var info = [country, wantRate, period, term];
+  var jsonfile = JSON.stringify(info);
+  var jsonverb =  {};
+  jsonverb[id] = info;
+
+  whale.storage.sync.set(jsonverb, function(){
+    alert('success');
+  });
+
+  whale.storage.sync.set({ 'id' : info}, function() {
+            console.log('Value is set to ' + info);
+  });
+
+  whale.storage.sync.get(['id'], function(result) {
+    console.log('Value currently is ' + result.id);
+  });
 }

@@ -21,5 +21,5 @@ form.addEventListener('submit', function(evt){
 
   whale.storage.sync.get(['id'], function(result) {
     console.log('Value currently is ' + result.id);
-  });  
+  });
 })();

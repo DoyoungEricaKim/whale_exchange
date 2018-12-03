@@ -23,20 +23,19 @@
     <article>
       <div id="reserv_rate_form" class="sheet reserv_rate_form">
 
-          <div id="ForeignCurrency" class="form_group">
-            <div class="ForeignCurrencySelect">
-              <p class="form" for="selectCur">외화 선택</p>
-            </div>
-            <select class="ex-input ex-input--default" id="selectCur" name="category">
-              <option selected>외화</option>
-              <option value="USD">미국 USD</option>
-              <option value="JPY">일본 JPY</option>
-              <option value="EUR">유럽연합 EUR</option>
-              <option value="CNY">중국 CNY</option>
-            </select>
-          </div>
-
           <form class="reservform">
+            <div id="ForeignCurrency" class="form_group">
+              <div class="ForeignCurrencySelect">
+                <p class="form" for="selectCur">외화 선택</p>
+              </div>
+              <select class="ex-input ex-input--default" id="selectCur" required>
+                <option value="" disabled selected>외화</option>
+                <option value="USD">미국 USD</option>
+                <option value="JPY">일본 JPY</option>
+                <option value="EUR">유럽연합 EUR</option>
+                <option value="CNY">중국 CNY</option>
+              </select>
+            </div>
 
             <div id="foreignCurresult_form">
               <p class="form">현재 환율</p>
@@ -73,6 +72,7 @@
                 class="success ex- btn--large ex-btn--primary">확인
               </button>
             </div>
+            <p id="demo"></p>
          <!-- onclick="location.href='confirm.html'" !-->
           </form>
       </div>
