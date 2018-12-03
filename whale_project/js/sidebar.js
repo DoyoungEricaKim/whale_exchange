@@ -13,15 +13,15 @@ function initialize(){
   var jsonverb =  {};
   jsonverb[id] = info;
 
-  chrome.storage.sync.set(jsonverb, function(){
+  whale.storage.sync.set(jsonverb, function(){
     alert('success');
   });
 
-  chrome.storage.sync.set({ 'id' : info}, function() {
+  whale.storage.sync.set({ 'id' : info}, function() {
             console.log('Value is set to ' + info);
   });
 
-  chrome.storage.sync.get(['id'], function(result) {
+  whale.storage.sync.get(['id'], function(result) {
     console.log('Value currently is ' + result.id);
   });
 }
