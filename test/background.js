@@ -1,16 +1,29 @@
-/**
- * Listens for the app launching then creates the window
- *
- * @see http://developer.chrome.com/apps/app.window.html
- */
-chrome.app.runtime.onLaunched.addListener(function() {
-  chrome.app.window.create('index.html', {
-    id: 'main',
-    bounds: { width: 620, height: 500 }
-  });
-});
+(function () {
 
-chrome.app.window.create('index.html', {
-  id: 'main',
-  bounds: { width: 620, height: 500 }
-});
+  whale.runtime.sendMessage({sidebarOpened: true})
+
+  whale.runtime.onMessage.addListener((message, sender, sendResponse) => {
+  })
+
+  whale.sidebarAction.onClicked.addListener((result) => {
+    //siderbar 열렸을때 초기 설정
+  })
+
+
+  var test2 = document.getElementById("hw");
+  test2.addEventListener('click', function() {
+    alert('Hello world2222');
+  })
+  var test = document.getElementById("text");
+    test.addEventListener('change', function() {
+      alert('Hello world');
+  })
+  var test3 = document.getElementById("selectCur");
+  if(test3){
+    test3.addEventListener('change', function() {
+      alert('Hello world');
+    })
+  }
+
+
+})()

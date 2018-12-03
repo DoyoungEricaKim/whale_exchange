@@ -1,15 +1,27 @@
 {
-  "manifest_version": 2,
-  "name": "Codelab",
-  "version": "1",
-  "icons": {
-    "128": "icon_128.png"
-  },
-  "permissions": [],
-  "app": {
+    "manifest_version": 2,
+    "name": "안녕 웨일",
+    "version": "1.0.0",
+
+    "description": "확장앱 설명",
+    "icons": {
+      "128": "icon_128.png"
+    },
+
+    "sidebar_action": {
+      "default_icon": {
+       "16": "icon_128.png"
+     },
+    "default_page": "index.html",
+    "default_title": "환전 알람",
+    "use_navigation_bar": false,
+    "mobile_user_agent": true
+
+    },
+
     "background": {
-      "scripts": ["background.js"]
-    }
-  },
-  "minimum_chrome_version": "28"
+        "scripts": ["background.js"]
+    },
+    "content_scripts": [],
+    "permissions": []
 }

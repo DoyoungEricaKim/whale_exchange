@@ -1,3 +1,35 @@
+(function () {
+
+  whale.runtime.sendMessage({sidebarOpened: true})
+
+  whale.runtime.onMessage.addListener((message, sender, sendResponse) => {
+  })
+
+  whale.sidebarAction.onClicked.addListener((result) => {
+    //siderbar 열렸을때 초기 설정
+  })
+
+  $('#id_reserv').on('click', (event) => {
+    event.preventDefault()
+    window.location.href = "index.html"
+    alert("id_reserv selected!");
+  })
+  $('#id_check').on('click', (event) => {
+    event.preventDefault()
+    window.location.href = "check.html"
+  })
+
+  var callSelectCur = document.getElementById("selectCur");
+  callSelectCur.addEventListener('change', function() {
+    selectCur();
+  })
+
+/* wantKRW 받아 올때 쓸 addEventListener
+  var test2 = document.getElementById("wantKRW");
+  test2.addEventListener('change', selectCur())
+*/
+})()
+
 function selectCur() {
   var USD = "USD";
   var _USD = "1 달러";
@@ -35,6 +67,21 @@ function countCheck() {
   var days = Math.floor(diff/(1000*60*60*24) + 1);
   var reserveDay = new Date(s).getTime();
   return reserveDay;
+}
+
+function blockCal (){
+  var tmp = new Date();
+  var day = tmp.getDate();
+  var month = tmp.getMonth() + 1;
+  var year = tmp.getFullYear();
+  if(day < 10) {
+    day = '0'+day;
+  }
+  if(month<10) {
+    month = '0'+month;
+  }
+  tmp = year+ '-' + month + '-' + day;
+  document.getElementById('pdate').min = tmp;
 }
 
 function setData1(data, status){
