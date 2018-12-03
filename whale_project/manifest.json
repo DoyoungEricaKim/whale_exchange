@@ -5,12 +5,11 @@
 
     "description": "환율 예약 알람 서비스",
     "icons": {
-      "16": "image/icon.png"
+      "16": "icon.jpg"
     },
-    "default_locale": "ko",
     "sidebar_action": {
       "default_icon": {
-         "16": "image/icon.png"
+         "16": "icon.jpg"
       },
       "default_page": "index.html",
       "default_title": "환전 알람",
@@ -19,10 +18,8 @@
     },
 
     "background": {
-        "scripts": [],
+        "scripts": [ "js/main.js" ]
     },
-    "content_scripts": [ {
-      "css": [ "script/content.css" ],
-      }],
-    "permissions": ["tabs", "notifications", "storage" ]
+
+    "permissions": ["tabs", "notifications", "storage", "alarms" ]
   }

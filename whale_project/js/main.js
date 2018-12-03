@@ -1,4 +1,3 @@
-
 function selectCur() {
   var USD = "USD";
   var _USD = "1 달러";
@@ -34,7 +33,8 @@ function countCheck() {
   var today = new Date();
   var diff = theday.getTime() -  today.getTime();
   var days = Math.floor(diff/(1000*60*60*24) + 1);
-  return days;
+  var reserveDay = new Date(s).getTime();
+  return reserveDay;
 }
 
 function setData1(data, status){
@@ -59,21 +59,30 @@ function setData4(data, status){
   test.html(curstr4);
 }
 
-function mainfunc(countNum, ecRate, wantRate){
-  var count = 0;
+function mainfunc(reserveDay, ecRate, wantRate){
+  var nowDate = new Date().getTime;
+  var dDay = Math.floor((reserveDay - nowDate)/(1000*60*60*24) + 1);
   var success = false;
-
-  while(count < countNum){
-//    success = false;
-    count++;
+  document.write(dDay);
+  if(dDay > 0){
     if(ecRate == wantRate){
       //알람기능1
       success = true;
       break;
     }
+    if(dDay == 2){
+      if(ecRate==wantRate){
+        //알람 기능1
+        success = true;
+        break;
+      } else{
+        //alarm2
+      }
+    }
   }
+
   if(success == false){
-    //alarm2
+    //alarm3
   }
   clearAll(); //모든 설정 초기화
   return;
