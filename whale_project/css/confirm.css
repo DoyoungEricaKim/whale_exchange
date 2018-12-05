@@ -1,0 +1,45 @@
+body {
+  color:#333;
+  text-shadow: none;
+  font-family: "a펜고딕M";
+  text-align: center;
+}
+.masthead {
+  margin-bottom: 2rem;
+  font-weight: 500;
+  font-family: "a장미다방";
+  padding:2.5rem;
+  color: #102E4C;
+  text-align: center;
+}
+#conf,
+#checkinfo{
+  color: #fff;
+  text-shadow: none;
+  font-size: 100%;
+  background-color: #102E4C;
+  border: #102E4C;
+}
+.cover-heading{
+  font-size: 250%;
+  font-weight: 350;
+}
+.lead{
+  font-size: 120%;
+}
+
+#icon {
+  margin: 1.5rem;
+  width: 40%;
+  height: 40%;
+}
+#logo {
+  margin-bottom: 1.5rem;
+  width: 20%;
+  height: 100%;
+  float:left;
+}
+.inner {
+  border-bottom: 1em solid #D0E2F3;
+  background-color: #D0E2F3;
+}
