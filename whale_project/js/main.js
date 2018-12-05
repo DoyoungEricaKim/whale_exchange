@@ -26,19 +26,24 @@
     window.location.href = "check.html"
   })
   var callSelectCur = document.getElementById("selectCur");
-  callSelectCur.addEventListener('change', function() {
-    selectCur();
-  })
+  if(callSelectCur) {
+    callSelectCur.addEventListener('click', function(evt) {
+      evt.preventDefault();
+      selectCur();
+    })
+  }
 
   var toConfirmPage = document.getElementById("reservform");
-  toConfirmPage.addEventListener('submit', function(evt) {
-    //var formCheck = $("#reservform");
-      alert("hey it works");
-      evt.preventDefault();
-      //formCheck.find("#id_complete_button").trigger('click');
-      window.location.href= "confirm.html"
-      alert("That's no no");
-  })
+  if(toConfirmPage) {
+    toConfirmPage.addEventListener('submit', function(evt) {
+      //var formCheck = $("#reservform");
+        alert("hey it works");
+        evt.preventDefault();
+        //formCheck.find("#id_complete_button").trigger('click');
+        window.location.href= "confirm.html"
+        alert("That's no no");
+    })
+  }
 
 /* wantKRW 받아 올때 쓸 addEventListener
   var test2 = document.getElementById("wantKRW");

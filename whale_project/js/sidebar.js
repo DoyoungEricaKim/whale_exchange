@@ -13,16 +13,18 @@
   var jsonverb = {};
   var id = jsonverb.length + 1;
   jsonverb[id] = info;
-  form.addEveontListener('change', function(evt){
-  var value = jsonverb;
-  alert(jsonfile);
-  evt.preventDefault();
-  whale.storage.sync.set("jsonverb", function() {
-    console.log('Value is set to ' + value);
+  if(form) {
+    form.addEveontListener('change', function(evt){
+    var value = jsonverb;
+    alert(jsonfile);
+    evt.preventDefault();
+    whale.storage.sync.set("jsonverb", function() {
+      console.log('Value is set to ' + value);
+    });
   });
-});
+}
 
   whale.storage.sync.get("id", function(result) {
-    console.log('Value currently is ' + result.id);
+    console.log("Value currently is " + result.id);
   });
 })();
