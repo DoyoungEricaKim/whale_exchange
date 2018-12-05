@@ -23,12 +23,12 @@
     <article>
       <div id="reserv_rate_form" class="sheet reserv_rate_form">
 
-          <form id="reservform">
+          <form id="reservform" name="reservform">
             <div id="ForeignCurrency" class="form_group">
               <div class="ForeignCurrencySelect">
                 <p class="form" for="selectCur">외화 선택</p>
               </div>
-              <select class="ex-input ex-input--default" id="selectCur" required>
+              <select name="selectCur" id="selectCur" required>
                 <option value="" disabled selected>외화</option>
                 <option value="USD">미국 USD</option>
                 <option value="JPY">일본 JPY</option>
@@ -48,8 +48,7 @@
               <p class="form">희망 환율</p>
               <input type="text" id="ForeignCur1" placeholder="외화 환율" disabled>
               <br>
-              <input type="text" id="wantKRW" class="ex-input ex-input--default"
-                name="KRWwant" placeholder="희망 환율 입력" required />
+              <input type="text" id="wantKRW" name="wantKRW" placeholder="희망 환율 입력" required />
             </div>
 
             <div id="calendar_form" class="form_group">
@@ -81,6 +80,7 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/main.js"></script>
     <script src="js/sidebar.js"></script>
+    <script src="js/storage.js"></script>
 
 
   </body>
