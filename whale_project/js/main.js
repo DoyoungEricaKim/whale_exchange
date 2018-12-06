@@ -41,7 +41,7 @@
         evt.preventDefault();
         //formCheck.find("#id_complete_button").trigger('click');
         window.location.href= "confirm.html"
-        alert("That's no no");
+        //alert("That's no no");
     })
   }
 
@@ -134,7 +134,7 @@ function mainfunc(reserveDay, ecRate, wantRate){
   document.write(dDay);
   if(dDay > 0){
     if(ecRate == wantRate){
-z      //알람기능1
+      //알람기능1
       success = true;
       break;
     }
@@ -155,7 +155,7 @@ z      //알람기능1
   clearAll(); //모든 설정 초기화
   return;
 }
-
+/*
 function initialize(){
   var country = $('#selectCur').val()
   var wantRate = $('#wantKRW').val()
@@ -180,3 +180,4 @@ function initialize(){
     console.log('Value currently is ' + result.id);
   });
 }
+*/
