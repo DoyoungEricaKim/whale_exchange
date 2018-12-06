@@ -5,7 +5,7 @@
 
     "description": "환율 예약 알람 서비스",
     "icons": {
-      "16": "img/logo.png"
+      "512": "img/logo.png"
     },
     "sidebar_action": {
       "default_icon": {
