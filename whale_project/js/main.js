@@ -23,7 +23,7 @@
   })
   $('#checkinfo').on('click', (event) => {
     event.preventDefault()
-    window.location.href = "check.html"
+    window.location.href = "check.html";
   })
   var callSelectCur = document.getElementById("selectCur");
   if(callSelectCur) {
@@ -41,7 +41,7 @@
         evt.preventDefault();
         //formCheck.find("#id_complete_button").trigger('click');
         window.location.href= "confirm.html"
-        alert("That's no no");
+        //alert("That's no no");
     })
   }
 
@@ -134,7 +134,7 @@ function mainfunc(reserveDay, ecRate, wantRate){
   document.write(dDay);
   if(dDay > 0){
     if(ecRate == wantRate){
-z      //알람기능1
+      //알람기능1
       success = true;
       break;
     }
@@ -155,28 +155,25 @@ z      //알람기능1
   clearAll(); //모든 설정 초기화
   return;
 }
-
+/*
 function initialize(){
   var country = $('#selectCur').val()
   var wantRate = $('#wantKRW').val()
   var period = $('#pdate').val()
   var term = $('#alarmterm').val()
-
   var id = reservlist.length + 1;
   var info = [country, wantRate, period, term];
   var jsonfile = JSON.stringify(info);
   var jsonverb =  {};
   jsonverb[id] = info;
-
   whale.storage.sync.set(jsonverb, function(){
     alert('success');
   });
-
   whale.storage.sync.set({ 'id' : info}, function() {
             console.log('Value is set to ' + info);
   });
-
   whale.storage.sync.get(['id'], function(result) {
     console.log('Value currently is ' + result.id);
   });
 }
+*/
