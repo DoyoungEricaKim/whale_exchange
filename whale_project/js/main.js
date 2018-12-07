@@ -1,55 +1,43 @@
 (function () {
 
-  whale.runtime.sendMessage({sidebarOpened: true})
+      $('#id_reserv').on('click', (event) => {
+        event.preventDefault()
+        window.location.href = "index.html";
+      })
+      $('#id_check').on('click', (event) => {
+        event.preventDefault()
+        window.location.href = "check.html";
+      })
+      $('#conf').on('click', (event) => {
+        event.preventDefault()
+        window.location.href = "index.html";
+      })
+      $('#checkinfo').on('click', (event) => {
+        event.preventDefault()
+        window.location.href = "check.html";
+      })
+      //var callSelectCur = document.getElementById("selectCur");
+      $("#selectCur").on('click', (event) => {
+        event.preventDefault();
+        //var callSelectCur = $(this).val();
+        selectCur();
+      })
 
-  whale.runtime.onMessage.addListener((message, sender, sendResponse) => {
-  })
+      var toConfirmPage = document.getElementById("reservform");
+      if (toConfirmPage) {
+        toConfirmPage.addEventListener('submit', function(evt) {
+            alert("hey it works");
+            evt.preventDefault();
+            window.location.href= "confirm.html";
+        })
+      }
 
-  whale.sidebarAction.onClicked.addListener((result) => {
-    //siderbar 열렸을때 초기 설정
-  })
-
-  $('#id_reserv').on('click', (event) => {
-    event.preventDefault()
-    window.location.href = "index.html"
-  })
-  $('#id_check').on('click', (event) => {
-    event.preventDefault()
-    window.location.href = "check.html"
-  })
-  $('#conf').on('click', (event) => {
-    event.preventDefault()
-    window.location.href = "index.html"
-  })
-  $('#checkinfo').on('click', (event) => {
-    event.preventDefault()
-    window.location.href = "check.html";
-  })
-  var callSelectCur = document.getElementById("selectCur");
-  if(callSelectCur) {
-    callSelectCur.addEventListener('click', function(evt) {
-      evt.preventDefault();
-      selectCur();
-    })
-  }
-
-  var toConfirmPage = document.getElementById("reservform");
-  if(toConfirmPage) {
-    toConfirmPage.addEventListener('submit', function(evt) {
-      //var formCheck = $("#reservform");
-        alert("hey it works");
-        evt.preventDefault();
-        //formCheck.find("#id_complete_button").trigger('click');
-        window.location.href= "confirm.html"
-        //alert("That's no no");
-    })
-  }
+})()
 
 /* wantKRW 받아 올때 쓸 addEventListener
   var test2 = document.getElementById("wantKRW");
   test2.addEventListener('change', selectCur())
 */
-})()
 
 function selectCur() {
   var USD = "USD";
@@ -126,54 +114,3 @@ function setData4(data, status){
   var curstr4 = JSON.stringify(data['CNY_KRW']['val']);
   test.html(curstr4);
 }
-
-function mainfunc(reserveDay, ecRate, wantRate){
-  var nowDate = new Date().getTime;
-  var dDay = Math.floor((reserveDay - nowDate)/(1000*60*60*24) + 1);
-  var success = false;
-  document.write(dDay);
-  if(dDay > 0){
-    if(ecRate == wantRate){
-      //알람기능1
-      success = true;
-      break;
-    }
-    if(dDay == 2){
-      if(ecRate==wantRate){
-        //알람 기능1
-        success = true;
-        break;
-      } else{
-        //alarm2
-      }
-    }
-  }
-
-  if(success == false){
-    //alarm3
-  }
-  clearAll(); //모든 설정 초기화
-  return;
-}
-/*
-function initialize(){
-  var country = $('#selectCur').val()
-  var wantRate = $('#wantKRW').val()
-  var period = $('#pdate').val()
-  var term = $('#alarmterm').val()
-  var id = reservlist.length + 1;
-  var info = [country, wantRate, period, term];
-  var jsonfile = JSON.stringify(info);
-  var jsonverb =  {};
-  jsonverb[id] = info;
-  whale.storage.sync.set(jsonverb, function(){
-    alert('success');
-  });
-  whale.storage.sync.set({ 'id' : info}, function() {
-            console.log('Value is set to ' + info);
-  });
-  whale.storage.sync.get(['id'], function(result) {
-    console.log('Value currently is ' + result.id);
-  });
-}
-*/

@@ -1,29 +1,45 @@
+chrome.notifications.create(
+  ‘id1’,{
+      type: ‘basic’,
+      iconUrl: ‘image1.png’,
+      title: ‘Althe Frazon’,
+      message: ‘Hi, what's going on tonight?’,
+      buttons: [{ title: ‘Call’,
+                  iconUrl: ‘call.png’},
+                { title: ‘Send Email’,
+                  iconUrl: ‘email.png’}],
+      priority: 0},
+  function() { /* Error checking goes here */}
+);
+
+
 function notifyMe(){
-  if(!("Notification" in window)){
-    alert("This browser does not support systenm notification");
-  }else if(Notification.permission==="granted"){
-    notify();
-  }else if (Notification.permission !=="denied") {
-    Notification.requestPermission(function(permission){
-      if(permission==="granted"){
-        notify();
-      }
+  if (Notification.permission !== "granted")
+    Notification.requestPermission();
+  else {
+    var options = new Notification({
+      type: "basic",
+      title: "My first popup with chrome",
+      message: "This is pretty cool",
+      iconURL: "img/logo.png"
+    });
+    chrome.notifications.onClicked.addListener(function(successNotif){
+      window.open("check.html");
+    });
+
     });
   }
-}
 
-function notify(){
-  var options = {
-    type: "basic",
-    title: "My first popup with chrome",
-    message: "This is pretty cool",
-    iconURL: "img/"logo.png,
-    actions: [
-      {action: 'explore', title: 'Go to the site', icon:""},
-      {action: 'close', title: 'No thank you' icon:''}
-    ],
-    data: {primaryKey: 1} //
-  };
+
+
+
+/*
+//옵션 내용에 넣으려 했던 내용들
+  actions: [
+    {action: 'explore', title: 'Go to the site', icon:""},
+    {action: 'close', title: 'No thank you' icon:''}
+  ],
+  data: {primaryKey: 1} //
 
   self.addEventListener('notificationClick', function(event){
     var notification = event.notification;
@@ -39,21 +55,38 @@ function notify(){
     var primaryKey = notification.data.primaryKey;
     console.log('Closed notification: '+ primaryKey);
   });
-  /*
-  whale.notifications.onClicked.addListener((id) => {
-    if(id == 'notificationClick') {
-      whale.storage.sync.get([], function(){
-
-      })
-    }
-  }
 */
-//  setTimeout(options.close.bind(notification),6000); //자동으로 팝업 다운되는 기능
 
-}
+
+
+
+
 /*
-$('#id_complete_button').click(function(){
-  whale.notifications.create('successNotif', options);
-  notifyMe();
+  //notification 기능
+  $('#id_complete_button').click(function(){
+    whale.storage.sync.get([], function(){
+      var a = 0;
+      whale.storage.sync.set({}, function(){
+        if(){ //환율비교
+          var notifOptions = {
+            type: "basic",
+            iconUrl:"img/logo.png",
+            title:"환율 알람!!",
+            message:"목표하신 알람에 도달했습니다. "
+          };
+          whale.notifications.create('successNotif', notifOptions);
+        }
+      }
+    });
+
+  });
 });
+
+*/
+
+/*
+  whale.notifications.onClicked.addListener((id) =>{
+    if(id == 'id_complete_button'){
+      notifyMe();
+    })
 */

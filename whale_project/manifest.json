@@ -16,10 +16,12 @@
       "use_navigation_bar": false,
       "mobile_user_agent": true
     },
-
+    "content_scripts" : {
+      "js":["js/main.js"]
+    },
     "background": {
-        "scripts": [ "js/main.js" ]
+        "scripts": [ "js/background.js" ]
     },
 
-    "permissions": ["tabs", "notifications", "storage", "alarms" ]
+    "permissions": ["tabs", "notifications", "storage"]
   }
