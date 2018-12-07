@@ -23,8 +23,7 @@
     window.location.href = "check.html";
   })
   $('#id_complete_button').on('click', (event) => {
-    alert('did it?');
-    notifyMe();
+   notifyMe();
   })
   var callSelectCur = document.getElementById("selectCur");
   if(callSelectCur) {
@@ -43,7 +42,7 @@
     })
   }
 
-  chrome.notifications.onClicked.addListener(replyPopup);
+  whale.notifications.onClicked.addListener(replyPopup);
 
 /* wantKRW 받아 올때 쓸 addEventListener
   var test2 = document.getElementById("wantKRW");
@@ -52,14 +51,25 @@
 })()
 
 function notifyMe(){
-  var options = {
+  var option1 = {
     type: 'basic',
-    title: "My first popup with chrome",
-    message: "This is pretty cool",
+    title: "목표 환율 달성!!!",
+    message: "설정하신 환율값에 도달했습니다. 예약 내역을 확인해주세요.",
     iconUrl: "img/logo.png"
     };
-  chrome.notifications.create('Success', options, callback);
+  whale.notifications.create('success', option1, callback);
+//  chrome.notifications.create('fail', option2, callback);
 
+}
+
+function failNoti(){
+  var option2 = {
+    type: 'basic',
+    title: "목표 환율 달성 실패...",
+    message: "지정한 기간 내 목표한 환율값에 도달하지 못했습니다.",
+    iconUrl: "img/logo.png"
+    };
+  chrome.notifications.create('fail', option2, callback);
 }
 
 function callback(){
@@ -67,8 +77,11 @@ function callback(){
 }
 
 function replyPopup(){
+  whale.sidebarAction.show({
+    url: whale.runtime.getURL("check.html"),
+    reload: true
+  });
   console.log("opened check.html");
-  window.open("check.html");
 }
 
 function selectCur() {
