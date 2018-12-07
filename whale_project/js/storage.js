@@ -12,7 +12,7 @@ function runStorage() {
   var date = $("#pdate").val();
   var testArray=[country, krw, date];
 
-  //exchangeRate: { "USD": [1160, '2018-12-07']}
+  //exchangeRate: { 'data' : ['USD', 1160, '2018-12-07']}
   // 환율 가져오기
 
   chrome.storage.sync.set({"test-value": [krw, date]}, function() {
