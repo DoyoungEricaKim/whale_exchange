@@ -62,7 +62,7 @@
             <div class="row">
               <div class="col-md-6 mb-3">
                 <label class="form">희망 환율</label>
-                <input type="text" class="form-control" id="ForeignCur1" placeholder="외화 환율" readonly>
+                <input type="text" class="form-control" id="ForeignCur1" placeholder="외화 환율" readonly/>
               </div>
               <div class="col-md-6 mb-3">
                 <input type="text" id="wantKRW"  class="form-control" name="wantKRW" placeholder="희망 환율 입력" required />
@@ -72,23 +72,12 @@
             <div id="calendar_form" >
               <div id="deadline">
                 <label class="form">D-day:</label>
-                <input type="date" id="pdate" name="deadline" class="form-control"
-                  onchange="countCheck()" onclick="blockCal" required />
+                <input type="date" id="pdate" name="deadline" class="form-control" required />
               </div>
             </div>
 
-<!--
-            <div id="radio_form" class="form_group">
-              <p class="form">알람 주기 선택</p>
-              <input type="radio" id=alarmterm name="term1" value="per1" class="ex-input ex-input--default" required>매일<br>
-              <input type="radio" id=alarmterm name="term1" value="per3" class="ex-input ex-input--default" required> 3일 마다<br>
-              <input type="radio" id=alarmterm name="term1" value="per7" class="ex-input ex-input--default" required>일주일 마다<br>
-            </div>
-
-          -->
             <hr class="mb-4">
             <input id="id_complete_button" class="btn btn-primary btn-lg btn-block" type="submit" value="확인">
-                     <!-- onclick="location.href='confirm.html'" !-->
           </form>
       </div>
      </div>
