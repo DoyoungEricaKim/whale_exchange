@@ -7,27 +7,31 @@
     blockCal();
   })
   $('#id_reserv').on('click', (event) => {
-    event.preventDefault()
-    window.location.href = "index.html"
+    event.preventDefault();
+    window.location.href = "index.html";
   })
   $('#id_check').on('click', (event) => {
-    event.preventDefault()
-    window.location.href = "check.html"
+    event.preventDefault();
+    window.location.href = "check.html";
   })
   $('#conf').on('click', (event) => {
-    event.preventDefault()
-    window.location.href = "index.html"
+    event.preventDefault();
+    window.location.href = "index.html";
   })
   $('#checkinfo').on('click', (event) => {
-    event.preventDefault()
-    window.location.href = "check.html"
+    event.preventDefault();
+    window.location.href = "check.html";
+  })
+  $('#id_complete_button').on('click', (event) => {
+    alert('did it?');
+    notifyMe();
   })
   var callSelectCur = document.getElementById("selectCur");
   if(callSelectCur) {
     callSelectCur.addEventListener('click', function(evt) {
       evt.preventDefault();
       selectCur();
-    })
+    });
   }
 
   var toConfirmPage = document.getElementById("reservform");
@@ -35,15 +39,37 @@
     toConfirmPage.addEventListener('submit', function(evt) {
       //var formCheck = $("#reservform");
         evt.preventDefault();
-        window.location.href= "confirm.html"
+        window.location.href= "confirm.html";
     })
   }
+
+  chrome.notifications.onClicked.addListener(replyPopup);
 
 /* wantKRW 받아 올때 쓸 addEventListener
   var test2 = document.getElementById("wantKRW");
   test2.addEventListener('change', selectCur())
 */
 })()
+
+function notifyMe(){
+  var options = {
+    type: 'basic',
+    title: "My first popup with chrome",
+    message: "This is pretty cool",
+    iconUrl: "img/logo.png"
+    };
+  chrome.notifications.create('Success', options, callback);
+
+}
+
+function callback(){
+  console.log('pop up done');
+}
+
+function replyPopup(){
+  console.log("opened check.html");
+  window.open("check.html");
+}
 
 function selectCur() {
   var USD = "USD", _USD = "1 달러", JPY = "JPY", _JPY = "1 엔", EUR = "EUR",
@@ -74,7 +100,6 @@ function countCheck() {
   var today = new Date();
   var diff = theday.getTime() -  today.getTime();
   var days = Math.floor(diff/(1000*60*60*24) + 1);
-  alert(days);
   return days;
 }
 

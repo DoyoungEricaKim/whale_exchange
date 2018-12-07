@@ -1,68 +1,22 @@
-chrome.notifications.create(
-  ‘id1’,{
-      type: ‘basic’,
-      iconUrl: ‘image1.png’,
-      title: ‘Althe Frazon’,
-      message: ‘Hi, what's going on tonight?’,
-      buttons: [{ title: ‘Call’,
-                  iconUrl: ‘call.png’},
-                { title: ‘Send Email’,
-                  iconUrl: ‘email.png’}],
-      priority: 0},
-  function() { /* Error checking goes here */}
-);
 
 
-function notifyMe(){
-  if (Notification.permission !== "granted")
-    Notification.requestPermission();
-  else {
-    var options = new Notification({
-      type: "basic",
-      title: "My first popup with chrome",
-      message: "This is pretty cool",
-      iconURL: "img/logo.png",
-      data: {primaryKey: 1};
-    });
-    chrome.notifications.create('Success', options, function() {
-
-    });
-    } }
-
-    chrome.notifications.onClicked.addListener(function('Success'){
-      window.open("check.html");
-    });
+var options = {
+  type: 'basic',
+  title: "My first popup with chrome",
+  message: "This is pretty cool",
+  iconUrl: "img/logo.png"
+  };
+chrome.notifications.create('Success', options, callback);
+chrome.notifications.onClicked.addListener(replyPopup);
 
 
+function callback(){
+  console.log('pop up done');
+}
 
-
-
-/*
-//옵션 내용에 넣으려 했던 내용들
-  actions: [
-    {action: 'explore', title: 'Go to the site', icon:""},
-    {action: 'close', title: 'No thank you' icon:''}
-  ],
-  data: {primaryKey: 1} //
-
-  self.addEventListener('notificationClick', function(event){
-    var notification = event.notification;
-    var action = event.action;
-    if(action ==='close'){
-      notification.close();
-    } else{
-      clients.openWindow('check.html'); // 공지 누르면 예약 확인 페이지로 연결
-    }
-  });
-  self.addEventListener('notificationclose', function(event){
-    var notification = event.notification;
-    var primaryKey = notification.data.primaryKey;
-    console.log('Closed notification: '+ primaryKey);
-  });
-*/
-
-
-
+function replyPopup(){
+  window.open("check.html");
+}
 
 
 /*
@@ -86,11 +40,4 @@ function notifyMe(){
   });
 });
 
-*/
-
-/*
-  whale.notifications.onClicked.addListener((id) =>{
-    if(id == 'id_complete_button'){
-      notifyMe();
-    })
 */
