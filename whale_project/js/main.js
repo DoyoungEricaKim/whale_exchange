@@ -85,7 +85,7 @@ function replyPopup(){
 }
 
 function selectCur() {
-  var USD = "USD", _USD = "1 달러", JPY = "JPY", _JPY = "1 엔", EUR = "EUR",
+  var USD = "USD", _USD = "1 달러", JPY = "JPY", _JPY = "100 엔", EUR = "EUR",
       _EUR = "1 유로", CNY = "CNY", _CNY = "1 위안";
   var option = document.getElementById("selectCur").value;
   if(option == "USD") {
