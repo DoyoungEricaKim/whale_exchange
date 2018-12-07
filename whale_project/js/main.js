@@ -9,6 +9,12 @@
     //siderbar 열렸을때 초기 설정
   })
 
+  $('#pdate').on('change', (event) => {
+    countCheck();
+  })
+  $('#pdate').on('click', (event) => {
+    blockCal();
+  })
   $('#id_reserv').on('click', (event) => {
     event.preventDefault()
     window.location.href = "index.html"
@@ -37,11 +43,8 @@
   if(toConfirmPage) {
     toConfirmPage.addEventListener('submit', function(evt) {
       //var formCheck = $("#reservform");
-        alert("hey it works");
         evt.preventDefault();
-        //formCheck.find("#id_complete_button").trigger('click');
         window.location.href= "confirm.html"
-        //alert("That's no no");
     })
   }
 
@@ -52,31 +55,25 @@
 })()
 
 function selectCur() {
-  var USD = "USD";
-  var _USD = "1 달러";
-  var JPY = "JPY";
-  var _JPY = "1 엔";
-  var EUR = "EUR";
-  var _EUR = "1 유로";
-  var CNY = "CNY";
-  var _CNY = "1 위안";
+  var USD = "USD", _USD = "1 달러", JPY = "JPY", _JPY = "1 엔", EUR = "EUR",
+      _EUR = "1 유로", CNY = "CNY", _CNY = "1 위안";
   var option = document.getElementById("selectCur").value;
   if(option == "USD") {
     document.getElementById("ForeignCur").value = USD + "  " + _USD;
     document.getElementById("ForeignCur1").value = USD + "  " + _USD;
-    $.get("https://free.currencyconverterapi.com/api/v5/convert?q=USD_KRW&compact=y", setData1);
+    $.get("http://api.kimtree.net/exchange/", setData1);
   } else if (option == "JPY") {
     document.getElementById("ForeignCur").value = JPY + "  " + _JPY;
     document.getElementById("ForeignCur1").value = JPY + "  " + _JPY;
-    $.get("https://free.currencyconverterapi.com/api/v5/convert?q=JPY_KRW&compact=y", setData2);
+    $.get("http://api.kimtree.net/exchange/", setData2);
   } else if (option == "EUR") {
     document.getElementById("ForeignCur").value = EUR + "  " + _EUR;
     document.getElementById("ForeignCur1").value = EUR + "  " + _EUR;
-    $.get("https://free.currencyconverterapi.com/api/v5/convert?q=EUR_KRW&compact=y", setData3);
+    $.get("http://api.kimtree.net/exchange/", setData3);
   } else if (option == "CNY") {
     document.getElementById("ForeignCur").value = CNY + "  " + _CNY;
     document.getElementById("ForeignCur1").value = CNY + "  " + _CNY;
-    $.get("https://free.currencyconverterapi.com/api/v5/convert?q=CNY_KRW&compact=y", setData4);
+    $.get("http://api.kimtree.net/exchange/", setData4);
   }
 }
 
@@ -106,25 +103,25 @@ function blockCal (){
 }
 
 function setData1(data, status){
-  var test = $("#exchangeKRW");
-  var curstr = JSON.stringify(data['USD_KRW']['val']);
+  var test = $("#exchangeKRW"),
+      curstr = data["USD"];
   test.html(curstr);
 }
 function setData2(data, status){
-  var test = $("#exchangeKRW");
-  var curstr2 = JSON.stringify(data['JPY_KRW']['val']);
-  test.html(curstr2);
+  var test = $("#exchangeKRW"),
+      curstr = data["JPY"];
+  test.html(curstr);
 }
 
 function setData3(data, status){
-  var test = $("#exchangeKRW");
-  var curstr3 = JSON.stringify(data['EUR_KRW']['val']);
-  test.html(curstr3);
+  var test = $("#exchangeKRW"),
+      curstr = data["EUR"];
+  test.html(curstr);
 }
 function setData4(data, status){
-  var test = $("#exchangeKRW");
-  var curstr4 = JSON.stringify(data['CNY_KRW']['val']);
-  test.html(curstr4);
+  var test = $("#exchangeKRW"),
+      curstr = data["CNY"];
+  test.html(curstr);
 }
 
 function mainfunc(reserveDay, ecRate, wantRate){
@@ -155,29 +152,3 @@ function mainfunc(reserveDay, ecRate, wantRate){
   clearAll(); //모든 설정 초기화
   return;
 }
-/*
-function initialize(){
-  var country = $('#selectCur').val()
-  var wantRate = $('#wantKRW').val()
-  var period = $('#pdate').val()
-  var term = $('#alarmterm').val()
-
-  var id = reservlist.length + 1;
-  var info = [country, wantRate, period, term];
-  var jsonfile = JSON.stringify(info);
-  var jsonverb =  {};
-  jsonverb[id] = info;
-
-  whale.storage.sync.set(jsonverb, function(){
-    alert('success');
-  });
-
-  whale.storage.sync.set({ 'id' : info}, function() {
-            console.log('Value is set to ' + info);
-  });
-
-  whale.storage.sync.get(['id'], function(result) {
-    console.log('Value currently is ' + result.id);
-  });
-}
-*/
