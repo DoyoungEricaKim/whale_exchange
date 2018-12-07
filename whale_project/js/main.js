@@ -7,27 +7,30 @@
     blockCal();
   })
   $('#id_reserv').on('click', (event) => {
-    event.preventDefault()
-    window.location.href = "index.html"
+    event.preventDefault();
+    window.location.href = "index.html";
   })
   $('#id_check').on('click', (event) => {
-    event.preventDefault()
-    window.location.href = "check.html"
+    event.preventDefault();
+    window.location.href = "check.html";
   })
   $('#conf').on('click', (event) => {
-    event.preventDefault()
-    window.location.href = "index.html"
+    event.preventDefault();
+    window.location.href = "index.html";
   })
   $('#checkinfo').on('click', (event) => {
-    event.preventDefault()
-    window.location.href = "check.html"
+    event.preventDefault();
+    window.location.href = "check.html";
+  })
+  $('#id_complete_button').on('click', (event) => {
+   notifyMe();
   })
   var callSelectCur = document.getElementById("selectCur");
   if(callSelectCur) {
     callSelectCur.addEventListener('click', function(evt) {
       evt.preventDefault();
       selectCur();
-    })
+    });
   }
 
   var toConfirmPage = document.getElementById("reservform");
@@ -35,15 +38,51 @@
     toConfirmPage.addEventListener('submit', function(evt) {
       //var formCheck = $("#reservform");
         evt.preventDefault();
-        window.location.href= "confirm.html"
+        window.location.href= "confirm.html";
     })
   }
+
+  whale.notifications.onClicked.addListener(replyPopup);
 
 /* wantKRW 받아 올때 쓸 addEventListener
   var test2 = document.getElementById("wantKRW");
   test2.addEventListener('change', selectCur())
 */
 })()
+
+function notifyMe(){
+  var option1 = {
+    type: 'basic',
+    title: "목표 환율 달성!!!",
+    message: "설정하신 환율값에 도달했습니다. 예약 내역을 확인해주세요.",
+    iconUrl: "img/logo.png"
+    };
+  whale.notifications.create('success', option1, callback);
+//  chrome.notifications.create('fail', option2, callback);
+
+}
+
+function failNoti(){
+  var option2 = {
+    type: 'basic',
+    title: "목표 환율 달성 실패...",
+    message: "지정한 기간 내 목표한 환율값에 도달하지 못했습니다.",
+    iconUrl: "img/logo.png"
+    };
+  chrome.notifications.create('fail', option2, callback);
+}
+
+function callback(){
+  console.log('pop up done');
+}
+
+function replyPopup(){
+  whale.sidebarAction.show({
+    url: whale.runtime.getURL("check.html"),
+    reload: true
+  });
+  console.log("opened check.html");
+}
 
 function selectCur() {
   var USD = "USD", _USD = "1 달러", JPY = "JPY", _JPY = "1 엔", EUR = "EUR",
