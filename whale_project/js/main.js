@@ -22,9 +22,7 @@
     event.preventDefault();
     window.location.href = "check.html";
   })
-  $('#id_complete_button').on('click', (event) => {
-   notifyMe();
-  })
+
   var callSelectCur = document.getElementById("selectCur");
   if(callSelectCur) {
     callSelectCur.addEventListener('click', function(evt) {
@@ -41,48 +39,7 @@
         window.location.href= "confirm.html";
     })
   }
-
-  whale.notifications.onClicked.addListener(replyPopup);
-
-/* wantKRW 받아 올때 쓸 addEventListener
-  var test2 = document.getElementById("wantKRW");
-  test2.addEventListener('change', selectCur())
-*/
 })()
-
-function notifyMe(){
-  var option1 = {
-    type: 'basic',
-    title: "목표 환율 달성!!!",
-    message: "설정하신 환율값에 도달했습니다. 예약 내역을 확인해주세요.",
-    iconUrl: "img/logo.png"
-    };
-  whale.notifications.create('success', option1, callback);
-//  chrome.notifications.create('fail', option2, callback);
-
-}
-
-function failNoti(){
-  var option2 = {
-    type: 'basic',
-    title: "목표 환율 달성 실패...",
-    message: "지정한 기간 내 목표한 환율값에 도달하지 못했습니다.",
-    iconUrl: "img/logo.png"
-    };
-  chrome.notifications.create('fail', option2, callback);
-}
-
-function callback(){
-  console.log('pop up done');
-}
-
-function replyPopup(){
-  whale.sidebarAction.show({
-    url: whale.runtime.getURL("check.html"),
-    reload: true
-  });
-  console.log("opened check.html");
-}
 
 function selectCur() {
   var USD = "USD", _USD = "1 달러", JPY = "JPY", _JPY = "1 엔", EUR = "EUR",
@@ -105,15 +62,6 @@ function selectCur() {
     document.getElementById("ForeignCur1").value = CNY + "  " + _CNY;
     $.get("http://api.kimtree.net/exchange/", setData4);
   }
-}
-
-function countCheck() {
-  var s = document.getElementById("pdate").value;
-  var theday = new Date(s);
-  var today = new Date();
-  var diff = theday.getTime() -  today.getTime();
-  var days = Math.floor(diff/(1000*60*60*24) + 1);
-  return days;
 }
 
 function blockCal (){

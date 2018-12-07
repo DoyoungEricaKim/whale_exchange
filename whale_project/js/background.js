@@ -1,38 +1,55 @@
-whale.notifications.onClicked.addListener((id) =>{
-    if(id == 'id_complete_button'){
-        notifyMe();
-      })
+(function(){
 
-  }
-})
+  $('#id_complete_button').on('click', (event) => {
+   notifyMe();
+  })
+  whale.notifications.onClicked.addListener(replyPopup);
+})()
 
 function notifyMe(){
-  if (Notification.permission !== "granted")
-    Notification.requestPermission();
-  else {
-    var options = new Notification({
-      type: "basic",
-      title: "My first popup with chrome",
-      message: "This is pretty cool",
-      iconURL: "img/logo.png"
-    });
-    chrome.notifications.onClicked.addListener(function(successNotif){
-      window.open("check.html");
-    });
+  var option1 = {
+    type: 'basic',
+    title: "목표 환율 달성!!!",
+    message: "설정하신 환율값에 도달했습니다. 예약 내역을 확인해주세요.",
+    iconUrl: "img/logo.png"
+    };
+  whale.notifications.create('success', option1, callback);
+}
 
-    });
-  }
+function failNoti(){
+  var option2 = {
+    type: 'basic',
+    title: "목표 환율 달성 실패...",
+    message: "지정한 기간 내 목표한 환율값에 도달하지 못했습니다.",
+    iconUrl: "img/logo.png"
+    };
+  chrome.notifications.create('fail', option2, callback);
+}
+function callback(){
+  console.log('pop up done');
+}
 
+function replyPopup(){
+  whale.sidebarAction.show({
+    url: whale.runtime.getURL("check.html"),
+    reload: true
+  });
+  console.log("opened check.html");
+}
 
+function countCheck() {
+  var s = document.getElementById("pdate").value;
+  var theday = new Date(s);
+  var today = new Date();
+  var diff = theday.getTime() -  today.getTime();
+  var days = Math.floor(diff/(1000*60*60*24) + 1);
+  return days;
+}
 
+  function mainFunc(ecRate, wantRate){
+    var dDay = countCheck();
 
-
-  function mainfunc(reserveDay, ecRate, wantRate){
-    var nowDate = new Date().getTime;
-    var dDay = Math.floor((reserveDay - nowDate)/(1000*60*60*24) + 1);
-    var success = false;
-    document.write(dDay);
-    if(dDay > 0){
+    while(){
       if(ecRate == wantRate){
         //알람기능1
         success = true;
