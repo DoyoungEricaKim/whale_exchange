@@ -21,14 +21,18 @@ function notifyMe(){
       type: "basic",
       title: "My first popup with chrome",
       message: "This is pretty cool",
-      iconURL: "img/logo.png"
+      iconURL: "img/logo.png",
+      data: {primaryKey: 1};
     });
-    chrome.notifications.onClicked.addListener(function(successNotif){
+    chrome.notifications.create('Success', options, function() {
+
+    });
+    } }
+
+    chrome.notifications.onClicked.addListener(function('Success'){
       window.open("check.html");
     });
 
-    });
-  }
 
 
 
