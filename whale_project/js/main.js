@@ -1,49 +1,7 @@
 (function () {
 
-<<<<<<< HEAD
-      $('#id_reserv').on('click', (event) => {
-        event.preventDefault()
         window.location.href = "index.html";
       })
-      $('#id_check').on('click', (event) => {
-        event.preventDefault()
-        window.location.href = "check.html";
-      })
-      $('#conf').on('click', (event) => {
-        event.preventDefault()
-        window.location.href = "index.html";
-      })
-      $('#checkinfo').on('click', (event) => {
-        event.preventDefault()
-        window.location.href = "check.html";
-      })
-      //var callSelectCur = document.getElementById("selectCur");
-      $("#selectCur").on('click', (event) => {
-        event.preventDefault();
-        //var callSelectCur = $(this).val();
-        selectCur();
-      })
-
-      var toConfirmPage = document.getElementById("reservform");
-      if (toConfirmPage) {
-        toConfirmPage.addEventListener('submit', function(evt) {
-            alert("hey it works");
-            evt.preventDefault();
-            window.location.href= "confirm.html";
-        })
-      }
-
-})()
-=======
-  whale.runtime.sendMessage({sidebarOpened: true})
-
-  whale.runtime.onMessage.addListener((message, sender, sendResponse) => {
-  })
-
-  whale.sidebarAction.onClicked.addListener((result) => {
-    //siderbar 열렸을때 초기 설정
-  })
-
   $('#pdate').on('change', (event) => {
     countCheck();
   })
@@ -82,12 +40,12 @@
         window.location.href= "confirm.html"
     })
   }
->>>>>>> b1788e0aaafce5d7a49a818a99631411266e9c5e
 
 /* wantKRW 받아 올때 쓸 addEventListener
   var test2 = document.getElementById("wantKRW");
   test2.addEventListener('change', selectCur())
 */
+})()
 
 function selectCur() {
   var USD = "USD", _USD = "1 달러", JPY = "JPY", _JPY = "1 엔", EUR = "EUR",
@@ -158,35 +116,3 @@ function setData4(data, status){
       curstr = data["CNY"];
   test.html(curstr);
 }
-<<<<<<< HEAD
-=======
-
-function mainfunc(reserveDay, ecRate, wantRate){
-  var nowDate = new Date().getTime;
-  var dDay = Math.floor((reserveDay - nowDate)/(1000*60*60*24) + 1);
-  var success = false;
-  document.write(dDay);
-  if(dDay > 0){
-    if(ecRate == wantRate){
-      //알람기능1
-      success = true;
-      break;
-    }
-    if(dDay == 2){
-      if(ecRate==wantRate){
-        //알람 기능1
-        success = true;
-        break;
-      } else{
-        //alarm2
-      }
-    }
-  }
-
-  if(success == false){
-    //alarm3
-  }
-  clearAll(); //모든 설정 초기화
-  return;
-}
->>>>>>> b1788e0aaafce5d7a49a818a99631411266e9c5e
