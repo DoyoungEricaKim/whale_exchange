@@ -74,14 +74,7 @@ function countCheck() {
   var today = new Date();
   var diff = theday.getTime() -  today.getTime();
   var days = Math.floor(diff/(1000*60*60*24) + 1);
-<<<<<<< HEAD
-  var reserveDay = new Date(s).getTime();
-  alert(reserveDay);
-  return reserveDay;
-=======
-  alert(days);
   return days;
->>>>>>> ebd63e600e540e6d7f8918c8ab8fdc1ba6f0f78a
 }
 
 function blockCal (){
