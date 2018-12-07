@@ -1,7 +1,5 @@
 (function () {
 
-        window.location.href = "index.html";
-      })
   $('#pdate').on('change', (event) => {
     countCheck();
   })
@@ -76,8 +74,8 @@ function countCheck() {
   var today = new Date();
   var diff = theday.getTime() -  today.getTime();
   var days = Math.floor(diff/(1000*60*60*24) + 1);
-  var reserveDay = new Date(s).getTime();
-  return reserveDay;
+  alert(days);
+  return days;
 }
 
 function blockCal (){
