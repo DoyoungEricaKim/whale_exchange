@@ -1,24 +1,24 @@
 (function () {
 
-  $('#pdate').on('change', (event) => {
+  $('#pdate').on('change', function(event) {
     countCheck();
   })
-  $('#pdate').on('click', (event) => {
+  $('#pdate').on('click', function(event) {
     blockCal();
   })
-  $('#id_reserv').on('click', (event) => {
+  $('#id_reserv').on('click', function(event) {
     event.preventDefault();
     window.location.href = "index.html";
   })
-  $('#id_check').on('click', (event) => {
+  $('#id_check').on('click', function(event) {
     event.preventDefault();
     window.location.href = "check.html";
   })
-  $('#conf').on('click', (event) => {
+  $('#conf').on('click', function(event) {
     event.preventDefault();
     window.location.href = "index.html";
   })
-  $('#checkinfo').on('click', (event) => {
+  $('#checkinfo').on('click', function(event) {
     event.preventDefault();
     window.location.href = "check.html";
   })
@@ -95,6 +95,7 @@ function setData1(data, status){
       curstr = data["USD"];
   test.html(curstr);
 }
+
 function setData2(data, status){
   var test = $("#exchangeKRW"),
       curstr = data["JPY"];
