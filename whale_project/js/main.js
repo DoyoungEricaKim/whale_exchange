@@ -65,16 +65,6 @@ function selectCur() {
   }
 }
 
-function notifyMe(){
-  var option1 = {
-    type: 'basic',
-    title: "목표 환율 달성!!!",
-    message: "설정하신 환율값에 도달했습니다. 예약 내역을 확인해주세요.",
-    iconUrl: "img/logo.png"
-    };
-  whale.notifications.create('success', option1);
-}
-
 function blockCal (){
   var tmp = new Date();
   var day = tmp.getDate();
