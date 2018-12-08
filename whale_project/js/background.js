@@ -1,13 +1,14 @@
-chrome.runtime.onInstalled.addListener(function(){
-  chrome.storage.local.get("data", function(res){
-    var stoValue = res.data;
-    if(stoValue) {
-      for(let i=0; i<stoValue.length; i++){
-       getLimit(i);
-       getRate(i);
-     }
-    }
-  });
+whale.runtime.onInstalled.addListener(function(){
+  // whale.storage.sync.get("data", function(res){
+  //   var stoValue = res.data;
+  //   if(stoValue) {
+  //     for(let i=0; i<stoValue.length; i++){
+  //      getLimit(i);
+  //      getRate(i);
+  //      getCountry(i);
+  //    }
+  //   }
+  // });
 
   var success = false;
   var notibool = false;
@@ -27,9 +28,19 @@ chrome.runtime.onInstalled.addListener(function(){
 
 
 //  mainfunc(success, notibool);
+function getCountry(idx) {
+  var country;
+  whale.storage.sync.get("data", function(res) {
+      var a = res.data;
+      country = a[idx][0];
+      alert("country:"+ country);    //나중에 삭제하기
+   });
+   return country;
+}
+
 function getRate(idx) {
-var wantRate;
-chrome.storage.local.get("data", function(res) {
+  var wantRate;
+  whale.storage.sync.get("data", function(res) {
     var a = res.data;
     wantRate = a[idx][1];
     alert("want:"+ wantRate);    //나중에 삭제하기
@@ -128,64 +139,67 @@ function countCheck() {
   return days;
 }
 
-  function mainFunc(success, notibool ){
-    var today = formDate();          // 오늘 날짜 가져오기
-    var deadline = getLimit() ;      // array에서 값 가져오기
-    var ecRate = 1111;             // 현재 환율 가져오기 ㅇ
-    var preD = calDay();          //d-3 날짜 계산 함수
-    var wantRate = getRate();   //입력받은 input 값을 플로트 형식으로 변경
-    var d = countCheck();         //dDay 몇일 남았는지 계산
-
-    while(success!=true){
-      if(d > 3){             // Dday가 3일 넘어야만 prenoti 발생
-        if( today != deadline){
-          if(ecRate <= wantRate){
-            successNoti();
-            success = true;
-            break;
-          }
+function mainFunc(success, notibool ){
+  var today = formDate();          // 오늘 날짜 가져오기
+  var deadline = getLimit();      // array에서 값 가져오기
+  var country = getCountry();
+  var ecRate;             // 현재 환율 가져오기 ㅇ
+  var preD = calDay();          //d-3 날짜 계산 함수
+  var wantRate = getRate();   //입력받은 input 값을 플로트 형식으로 변경
+  var d = countCheck();         //dDay 몇일 남았는지 계산
+  $.get("http://api.kimtree.net/exchange/", function( data ) {
+      ecRate = data[country];
+  });
+  while(success!=true){
+    if(d > 3){             // Dday가 3일 넘어야만 prenoti 발생
+      if( today != deadline){
+        if(ecRate <= wantRate){
+          successNoti();
+          success = true;
+          break;
         }
-        else if( today == preD){    // d-3일인 날이 되었을 때
-          if(ecRate == wantRate){
-            successNoti();
-            success = true;
-            break;
-          }
-          else {
-            if(notiSbool == false){
-              preNoti();
-              notibool = true;
-            }
-          }
+      }
+      else if( today == preD){    // d-3일인 날이 되었을 때
+        if(ecRate == wantRate){
+          successNoti();
+          success = true;
+          break;
         }
         else {
+          if(notiSbool == false){
+            preNoti();
+            notibool = true;
+          }
+        }
+      }
+      else {
+        failNoti();
+        break;
+      }
+   }
+   else {   //Dday가 3일 안넘을때
+      if(today != deadline) {
+        if(ecRate <= wantRate){
+          successNoti();
+          success = true;
+          break;
+        }
+      }
+      else{
+        if(ecRate <= wantRate){
+          successNoti();
+          success = true;
+          break;
+        }
+        else{
           failNoti();
           break;
         }
-     }
-     else {   //Dday가 3일 안넘을때
-        if(today != deadline) {
-          if(ecRate <= wantRate){
-            successNoti();
-            success = true;
-            break;
-          }
-        }
-        else{
-          if(ecRate <= wantRate){
-            successNoti();
-            success = true;
-            break;
-          }
-          else{
-            failNoti();
-            break;
-          }
-        }
-
       }
 
     }
-//    clearAll(); //타임아웃 이후에 remove from storage
 
   }
+//    clearAll(); //타임아웃 이후에 remove from storage
+
+}
