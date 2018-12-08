@@ -9,9 +9,9 @@ whale.runtime.onInstalled.addListener(function(){
           for(var i=0; i<stoValue.length; i++){
             var success = false;
             var notibool = false;
-            alert("i값은? ", i);
+            alert("i값은? " + i);
             mainFunc(i, success, notibool);
-            alert("notibool?",notibool);
+            alert("notibool?" + notibool);
          }
         }
       });
@@ -30,69 +30,6 @@ whale.runtime.onInstalled.addListener(function(){
   }
   whale.tabs.sendMessage(tab.id, msg);
 */
-
-function getCountry(idx) {
-  var country;
-  whale.storage.sync.get("data", function(res) {
-      var a = res.data;
-      country = a[idx][0];
-      alert("country:"+ country);    //나중에 삭제하기
-   });
-   return country;
-}
-
-function getRate(idx) {
-  var wantRate;
-  whale.storage.sync.get("data", function(res) {
-    var a = res.data;
-    wantRate = a[idx][1];
-    alert("want:"+ wantRate);    //나중에 삭제하기
- });
- return wantRate;
-}
-
-function getLimit(idx) {
-var deadline;
-whale.storage.sync.get("data", function(res) {
-    var a = res.data;
-    deadline = a[idx][2];
-    alert("day:" + deadline);    //나중에 삭제하기
- });
- return deadline;
-}
-
-function calDay(i) {     //3일전 날짜 계산
-   var x = getLimit(i); // array deadline 선언값
-   var d = new Date(Date.parse(x) - 3 * 1000 * 60 * 60 * 24);
-   var day = d.getDate(),
-       month = d.getMonth() + 1,
-       year = d.getFullYear();
-   if(day < 10) {
-    day = '0'+day;
-   }
-   if(month<10) {
-    month = '0'+month;
-   }
-   d = year+ '-' + month + '-' + day;
-   alert('d-3일은:',d); //나중에 삭제하기
-   return d;
-}
-
-function formDate(){ // 오늘 날짜 계산 함수
-  var tmp = new Date();
-  var day = tmp.getDate(),
-      month = tmp.getMonth() + 1,
-      year = tmp.getFullYear();
-  if(day < 10) {
-    day = '0'+day;
-  }
-  if(month<10) {
-    month = '0'+month;
-  }
-  tmp = year+ '-' + month + '-' + day;
-  alert('오늘은: '+tmp);              //나중에 삭제하기
-  return tmp;
-}
 
 function successNoti(){
   var option1 = {
@@ -132,13 +69,79 @@ function replyPopup(){
   console.log("opened check.html");
 }
 
+
+function getCountry(idx) {
+  var country;
+  whale.storage.sync.get("data", function(res) {
+      var a = res.data;
+      country = a[idx][0];
+      alert("country:" + country);    //나중에 삭제하기
+   });
+   return country;
+}
+
+function getRate(idx) {
+  var wantRate;
+  whale.storage.sync.get("data", function(res) {
+    var a = res.data;
+    wantRate = a[idx][1];
+    alert("want:" + wantRate);    //나중에 삭제하기
+ });
+ return wantRate;
+}
+
+function getLimit(idx) {
+var deadline;
+whale.storage.sync.get("data", function(res) {
+    var a = res.data;
+    deadline = a[idx][2];
+    alert("day:" + deadline);    //나중에 삭제하기
+ });
+ return deadline;
+}
+
+function calDay(i) {     //3일전 날짜 계산
+   var x = getLimit(i); // array deadline 선언값
+   var d = new Date(Date.parse(getLimit(i)) - 3 * 1000 * 60 * 60 * 24);
+   var day = d.getDate(),
+       month = d.getMonth() + 1,
+       year = d.getFullYear();
+   if(day < 10) {
+    day = '0'+day;
+   }
+   if(month<10) {
+    month = '0'+month;
+   }
+   d = year+ '-' + month + '-' + day;
+   alert('d-3일은:'+ d); //나중에 삭제하기
+   return d;
+}
+
+function formDate(){ // 오늘 날짜 계산 함수
+  var tmp = new Date();
+  var day = tmp.getDate(),
+      month = tmp.getMonth() + 1,
+      year = tmp.getFullYear();
+  if(day < 10) {
+    day = '0'+day;
+  }
+  if(month<10) {
+    month = '0'+month;
+  }
+  tmp = year+ '-' + month + '-' + day;
+  alert('오늘은:'+ tmp);              //나중에 삭제하기
+  return tmp;
+}
+
+
+
 function countCheck(i) {
   var s = getLimit(i); // array에서 가져오기
   var theday = new Date(s);
   var today = new Date();
-  var diff = theday.getTime() -  today.getTime();
+  var diff = theday.getTime() - today.getTime();
   var days = Math.floor(diff/(1000*60*60*24) + 1);
-  alert("d-day까지는 몇일?", days);    //나중에 삭제하기
+  alert("d-day까지는 몇일?" + days);    //나중에 삭제하기
   return days;
 }
 
@@ -152,12 +155,42 @@ function mainFunc(i, success, notibool ){
   var wantRate = getRate(i);   //입력받은 input 값을 플로트 형식으로 변경
   var d = countCheck(i);         //dDay 몇일 남았는지 계산
   alert("현재까지는 돌았다");
+  alert("parseFloat: " + wantRate);
+  var p = wantRate - 20.5;
+  alert("p는" + p);
+
+  var ourRequest = new XMLHttpRequest();
+  ourRequest.open('GET', 'http://api.kimtree.net/exchange/');
+  ourRequest.onload = function(){
+    var ourData = ourRequest.responseText;
+    console.log(ourData[0]);
+    alert(ourData[0]);
+  };
+
+/*
+   $.ajax({
+    type: 'GET',
+    url: "http://api.kimtree.net/exchange/",
+    dataType: 'json'
+    success: function(data){
+      $.each(data, function(key, value){
+        container.append(key +': '+value+'</br>');
+      });
+
+    }
+
+    });
+*/
+
+/*
 
   $.get("http://api.kimtree.net/exchange/", function( data ) {
       ecRate1 = data[country];
-      alert("현재 환율: ", ecRate1);
+      alert("현재 환율1: " + ecRate1);
   });
-  // alert("현재 환율: ", ecRate);
+*/
+
+//  alert("현재 환율2: " + ecRate);
   alert("today, deadline, country, preD, wantRate, countCheck, ecRate");
   alert(today, deadline, country, preD, wantRate, countCheck, ecRate);
   while(success!=true){
@@ -187,6 +220,7 @@ function mainFunc(i, success, notibool ){
         break;
       }
    }
+   /*
    else {   //Dday가 3일 안넘을때
       if(today != deadline) {
         if(ecRate <= wantRate){
@@ -208,7 +242,7 @@ function mainFunc(i, success, notibool ){
       }
 
     }
-
+*/
   }
 //    clearAll(); //타임아웃 이후에 remove from storage
 
