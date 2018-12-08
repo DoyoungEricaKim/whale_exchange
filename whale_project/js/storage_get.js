@@ -18,19 +18,16 @@
       alert("Reservation deleted");
       deleteStorage(n);
     });
-    // $("#add").click(function() {
-    //   alert("adding table");
-    //   addTableRow();
-    // });
-    $("#del").click(function() {
-      alert("deleted table");
-      delTableRow();
-    });
     $("#table").on("DOMSubtreeModified",function(){
       displayMessage();
     });
 
   };
+  $("#delete_btn").click(function() {
+    alert("deleted table");
+    var idx = parseInt(document.getElementsByClassName("btn").id.substring(0, 1));
+    delTableRow(idx);
+  });
 })()
 
 function addTableRow(idx) {
@@ -39,8 +36,8 @@ function addTableRow(idx) {
       row = table.insertRow(len), cell1 = row.insertCell(0),
       cell2 = row.insertCell(1), cell3 = row.insertCell(2),
       cell4 = row.insertCell(3), cell5 = row.insertCell(4),
-      cell6 = row.insertCell(5), country, wantKRW, nowCur = "___",
-      date, status = "진행중",
+      cell6 = row.insertCell(5), country, wantKRW, date,
+      status = "진행중", nowCur,
       del_btn = document.createElement("button");
   whale.storage.sync.get("data", function(res) {
     var val = res.data;
@@ -51,18 +48,20 @@ function addTableRow(idx) {
     cell2.innerHTML = wantKRW;
     cell4.innerHTML = date;
   });
-  del_btn.className = "btn btn-light btn-sm";
-  del_btn.idName = "delete_btn";
+  $.get("http://api.kimtree.net/exchange/", function( data ) {
+    nowCur = data[country];
+    cell3.innerHTML = nowCur;
+  });
+  del_btn.className = "btn btn-light btn-sm " + idx;
+  del_btn.type = "button";
+  del_btn.id = "delete_btn";
   del_btn.innerHTML = 'X';
-  cell3.innerHTML = nowCur;
   cell5.innerHTML = status;
   cell6.appendChild(del_btn);
 }
 
-function delTableRow() {
-  //지우고픈 row 번호 알아와서 1 대신 넣기
-  var n = 1;//
-	document.getElementById("table").deleteRow(n);
+function delTableRow(idx) {
+	document.getElementById("table").deleteRow(idx);
 }
 
 function delTableRowAll() {
