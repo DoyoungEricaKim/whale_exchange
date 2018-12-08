@@ -1,23 +1,17 @@
 (function(){
   window.onload = function() {
-    var local_val =
     whale.storage.sync.get("data", function(res) {
       var storageVal = res.data;
-      console.log("change1");
-      // console.table(res.data);
-      // console.table(storageVal);
+      console.table(res.data);
+      console.table(storageVal);
       if(storageVal) {
-        for(var i = 0; i < storageVal.length; i++) {
-          //alert("idx: " + i);
+        for(var i = 0; i < storageVal.length; i++)
           addTableRow(i);
-        }
       }
     });
-
-    updateTable();
     $('#clear_btn').on('click', function(){
       alert("Reservations reset");
-    //  clearStorage();
+      clearStorage();
       delTableRowAll();
     });
     $("#delete_btn").click(function() {
@@ -29,14 +23,15 @@
     });
 
     $(document).on('click', ".btn", function() {
+      alert("button click");
       var tmp = $("button[id$='_btn']").attr('id'),
           idx = parseInt(tmp.substring(0, 1));
-      delTableRow(idx+1);
-      alert('단계1');
-      delTableRowAll();
-      //alert('단계2');
-      updateTable();
-      alert('단계2');
+      // delTableRow(idx+1);
+      // alert('단계1');
+      // delTableRowAll();
+      // //alert('단계2');
+      // updateTable();
+      // alert('단계2');
     });
   }
 })()
