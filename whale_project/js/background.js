@@ -1,19 +1,19 @@
 whale.runtime.onInstalled.addListener(function(){
-  // whale.storage.sync.get("data", function(res){
-  //   var stoValue = res.data;
-  //   if(stoValue) {
-  //     for(let i=0; i<stoValue.length; i++){
-  //      getLimit(i);
-  //      getRate(i);
-  //      getCountry(i);
-  //    }
-  //   }
-  // });
-  //이 거지 같은 웨일 새끼야
+  whale.storage.sync.get("data", function(res){
+    var stoValue = res.data;
+    if(stoValue) {
+      alert(stoValue.length);
+      for(let i=0; i<stoValue.length; i++){
+       getLimit(i);
+       getRate(i);
+       getCountry(i);
+     }
+    }
+  });
 
   var success = false;
   var notibool = false;
-  //  mainFunc(success, notibool);
+    mainFunc(success, notibool);
   alert("I'm in active or idle");
   successNoti();
   whale.notifications.onClicked.addListener(replyPopup);
@@ -151,6 +151,7 @@ function mainFunc(success, notibool ){
   $.get("http://api.kimtree.net/exchange/", function( data ) {
       ecRate = data[country];
   });
+  alert(ecRate);
   while(success!=true){
     if(d > 3){             // Dday가 3일 넘어야만 prenoti 발생
       if( today != deadline){
