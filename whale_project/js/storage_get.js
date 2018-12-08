@@ -22,12 +22,23 @@
       displayMessage();
     });
 
-  };
-  $("#delete_btn").click(function() {
-    alert("deleted table");
-    var idx = parseInt(document.getElementsByClassName("btn").id.substring(0, 1));
-    delTableRow(idx);
-  });
+    $(document).on('click', ".btn", function() {
+      alert("delete button clicked!!");
+      var tmp = $("button[id$='_btn']").attr('id');
+      var idx = parseInt(tmp.substring(0, 1));
+      alert(idx);
+      delTableRow(idx);
+      //var test = document.getElementById("btn").id.substring(0, 1)
+      //var idx = parseInt(test);
+      //delTableRow(idx);
+    });
+  //
+  // $("#delete_btn").click(function() {
+  //   alert("deleted table");
+  //   var idx = parseInt(document.getElementsByClassName("btn").id.substring(0, 1));
+  //   delTableRow(idx);
+  // });
+  }
 })()
 
 function addTableRow(idx) {
@@ -52,9 +63,10 @@ function addTableRow(idx) {
     nowCur = data[country];
     cell3.innerHTML = nowCur;
   });
-  del_btn.className = "btn btn-light btn-sm " + idx;
+  del_btn = document.createElement("button");
+  del_btn.className = "btn btn-light btn-sm";
   del_btn.type = "button";
-  del_btn.id = "delete_btn";
+  del_btn.id = idx + "delete_btn";
   del_btn.innerHTML = 'X';
   cell5.innerHTML = status;
   cell6.appendChild(del_btn);

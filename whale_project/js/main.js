@@ -40,7 +40,7 @@
 
 function selectCur() {
   var USD = "USD", _USD = "1 달러", JPY = "JPY", _JPY = "100 엔", EUR = "EUR",
-      _EUR = "1 유로", CNY = "CNY", _CNY = "1 위안";
+      _EUR = "1 유로", CNY = "CNY", _CNY = "1 위안", HKD = "HKD", _HKD = "1 달러";
   var option = document.getElementById("selectCur").value;
   if(option == "USD") {
     document.getElementById("ForeignCur").value = USD + "  " + _USD;
@@ -58,6 +58,10 @@ function selectCur() {
     document.getElementById("ForeignCur").value = CNY + "  " + _CNY;
     document.getElementById("ForeignCur1").value = CNY + "  " + _CNY;
     $.get("http://api.kimtree.net/exchange/", setData4);
+  } else if (option == "HKD") {
+    document.getElementById("ForeignCur").value = HKD + "  " + _HKD;
+    document.getElementById("ForeignCur1").value = HKD + "  " + _HKD;
+    $.get("http://api.kimtree.net/exchange/", setData5);
   }
 }
 
@@ -96,5 +100,10 @@ function setData3(data, status){
 function setData4(data, status){
   var test = $("#exchangeKRW"),
       curstr = data["CNY"];
+  test.html(curstr);
+}
+function setData5(data, status){
+  var test = $("#exchangeKRW"),
+      curstr = data["HKD"];
   test.html(curstr);
 }
