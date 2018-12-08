@@ -9,6 +9,7 @@ whale.runtime.onInstalled.addListener(function(){
   //    }
   //   }
   // });
+  //이 거지 같은 웨일 새끼야
 
   var success = false;
   var notibool = false;
