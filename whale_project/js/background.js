@@ -1,29 +1,32 @@
-alert('clalalalalal');
-whale.runtime.onInstalled.addListener(()=>{
+whale.runtime.onInstalled.addListener(function(){
+  whale.idle.setDetectionInterval(15);
+  whale.idle.onStateChanged.addListener(function(state){
+    if(state == "idle" || state == "active"){
+      var success = false;
+      var notibool = false;
+    //  mainFunc(success, notibool);
+      alert("I'm in active or idle");
+    }
+  });
   console.log('나온다아아아');
-  alert('dddddddddddd');
-  notifyMe();
-
+  successNoti();
   whale.notifications.onClicked.addListener(replyPopup);
+});
+
 
 /* table에서 fail/ success background color 변경을 위해 content.js에 message 전송 필요
   let msg = {
     txt: "hello"
   }
-  chrome.tabs.sendMessage(tab.id, msg);
+  whale.tabs.sendMessage(tab.id, msg);
 */
-  var success = false;
-  var notibool = false;
-//  mainfunc(success, notibool);
-});
 
-/*
-(function(){
-})()
-*/
+
+//  mainfunc(success, notibool);
+
 
 function calDay() {     //3일전 날짜 계산
-   var x = ; // array deadline 선언값
+   var x = new Date(); // array deadline 선언값
    var d = new Date(Date.parse(x) - 3 * 1000 * 60 * 60 * 24);
    var day = d.getDate(),
        month = d.getMonth() + 1,
@@ -53,14 +56,14 @@ function formDate(){ // 오늘 날짜 계산 함수
   return tmp;
 }
 
-function notifyMe(){
+function successNoti(){
   var option1 = {
     type: 'basic',
     title: "목표 환율 달성!!!",
     message: "설정하신 환율값에 도달했습니다. 예약 내역을 확인해주세요.",
     iconUrl: "img/logo.png"
     };
-  whale.notifications.create('success', option1, callback);
+  whale.notifications.create('success', option1);
 }
 
 function failNoti(){
@@ -70,7 +73,7 @@ function failNoti(){
     message: "지정한 기간 내 목표한 환율값에 도달하지 못했습니다.",
     iconUrl: "img/logo.png"
     };
-  chrome.notifications.create('fail', option2);
+  whale.notifications.create('fail', option2);
 }
 
 function preNoti(){
@@ -80,12 +83,7 @@ function preNoti(){
     message: "아직 목표한 환율에 도달하지 못했습니다.",
     iconUrl: "img/logo.png"
     };
-  chrome.notifications.create('notice', option3);
-}
-
-
-function callback(){
-  console.log('pop up done');
+  whale.notifications.create('notice', option3);
 }
 
 function replyPopup(){
@@ -95,7 +93,6 @@ function replyPopup(){
   });
   console.log("opened check.html");
 }
-
 
 function countCheck() {
   var s = document.getElementById("pdate").value; // array에서 가져오기
@@ -126,24 +123,24 @@ whale.storage.sync.get("data", function(res) {
 
   function mainFunc(success, notibool ){
     var today = formDate(); // 오늘 날짜 가져오기
-    var deadline = ; // array에서 값 가져오기
-    var ecRate = ; // 현재 환율 가져오기 ㅇ
+    var deadline = new Date(); // array에서 값 가져오기
+    var ecRate = 1111; // 현재 환율 가져오기 ㅇ
     var preD = calDay();  //d-3 날짜 계산 함수
     var wantRate = parseFloat(); //입력받은 input 값을 플로트 형식으로 변경
     var d = countCheck();  //dDay 몇일 남았는지 계산
 
-    while(success!=true){     // 12/ 20 1300 1400
+    while(success!=true){
       if(d > 3){             // Dday가 3일 넘어야만 prenoti 발생
         if( today != deadline){
           if(ecRate <= wantRate){
-            notifyMe();
+            successNoti();
             success = true;
             break;
           }
         }
         else if( today == preD){    // d-3일인 날이 되었을 때
           if(ecRate == wantRate){
-            notifyMe();
+            successNoti();
             success = true;
             break;
           }
@@ -162,14 +159,14 @@ whale.storage.sync.get("data", function(res) {
      else {   //Dday가 3일 안넘을때
         if(today != deadline) {
           if(ecRate <= wantRate){
-            notifyMe();
+            successNoti();
             success = true;
             break;
           }
         }
         else{
           if(ecRate <= wantRate){
-            notifyMe();
+            successNoti();
             success = true;
             break;
           }
