@@ -8,8 +8,6 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" type="text/css" href="css/datatables.min.css">
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-    
-
 
   </head>
   <body>
@@ -67,8 +65,7 @@
                 <input type="text" class="form-control" id="ForeignCur1" placeholder="외화 환율" readonly/>
               </div>
               <div class="col-md-6 mb-3">
-                <input type="text" id="wantKRW"  class="form-control" name="wantKRW" placeholder="희망 환율 입력" required />
-                <!--숫자로 받아지게 limit 걸어두기 -->
+                <input type="number" id="wantKRW" step="0.01" class="form-control" name="wantKRW" required />
               </div>
             </div>
 

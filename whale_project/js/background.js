@@ -1,14 +1,26 @@
-(function(){
+alert('clalalalalal');
+whale.runtime.onInstalled.addListener(()=>{
+  console.log('나온다아아아');
   alert('dddddddddddd');
   notifyMe();
 
   whale.notifications.onClicked.addListener(replyPopup);
 
+/* table에서 fail/ success background color 변경을 위해 content.js에 message 전송 필요
+  let msg = {
+    txt: "hello"
+  }
+  chrome.tabs.sendMessage(tab.id, msg);
+*/
   var success = false;
   var notibool = false;
-  mainfunc(success, notibool);
+//  mainfunc(success, notibool);
+});
 
+/*
+(function(){
 })()
+*/
 
 function calDay() {     //3일전 날짜 계산
    var x = ; // array deadline 선언값
