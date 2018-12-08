@@ -6,12 +6,9 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>EXCHANGE ALARM</title>
     <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" type="text/css" href="css/datatables.min.css">
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <script src="js/jquery.min.js"></script>
-    <script src="js/datatables.min.js" type="text/javascript"></script>
     <script src="js/bootstrap.min.js"></script>
-    <script src="js/main.js"></script>
     <script src="js/storage_get.js"></script>
     </head>
 
@@ -26,7 +23,7 @@
     </nav>
 
     <article>
-      <table class="table">
+      <table class="table" id="table">
         <thead>
           <tr>
             <th scope="col">국가</th>
@@ -38,54 +35,13 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td><button id="delete_btn"
-              class="btn btn-light btn-sm">x</button></td>
-          </tr>
-          <tr>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td><button id="delete_btn"
-              class="btn btn-light btn-sm">x</button></td>
-          </tr>
-          <tr>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td><button id="delete_btn"
-              class="btn btn-light btn-sm">x</button></td>
-          </tr>
         </tbody>
       </table>
+      <div id="no_reserve">예약 내역이 존재하지 않습니다.</div>
     </article>
     <button id="clear_btn">Reset</button>
-    <button id="delete_btn" class="btn btn-light btn-sm">x</button>
+    <button id="delete_btn" class="btn btn-light btn-sm">X</button>
+    <button id="add" class="btn btn-light btn-sm">add</button>
+    <button id="del" class="btn btn-light btn-sm">del</button>
   </body>
 </html>
-
-
-<!--
-<div class="col-md-6">
-  <div class="card flex-md-row mb-4 shadow-sm h-md-250">
-    <div class="card-body d-flex flex-column align-items-start">
-      <strong class="d-inline-block mb-2 text-primary">World</strong>
-      <h3 class="mb-0">
-        <a class="text-dark" href="#">Featured post</a>
-      </h3>
-      <div class="mb-1 text-muted">Nov 12</div>
-      <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-      <a href="#">Continue reading</a>
-    </div>
-  </div>
-</div>
--->

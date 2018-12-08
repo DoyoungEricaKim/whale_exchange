@@ -1,8 +1,4 @@
 (function () {
-
-  $('#pdate').on('change', function(event) {
-    countCheck();
-  })
   $('#pdate').on('click', function(event) {
     blockCal();
   })
