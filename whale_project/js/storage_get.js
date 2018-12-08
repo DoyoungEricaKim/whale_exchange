@@ -1,19 +1,5 @@
 (function(){
   window.onload = function() {
-    var local_val =
-    whale.storage.sync.get("data", function(res) {
-      var storageVal = res.data;
-      console.log("change1");
-      // console.table(res.data);
-      // console.table(storageVal);
-      if(storageVal) {
-        for(var i = 0; i < storageVal.length; i++) {
-          //alert("idx: " + i);
-          addTableRow(i);
-        }
-      }
-    });
-
     updateTable();
     $('#clear_btn').on('click', function(){
       alert("Reservations reset");
@@ -50,7 +36,7 @@ function addTableRow(idx) {
       cell6 = row.insertCell(5), country, wantKRW, date,
       status = "진행중", nowCur,
       del_btn = document.createElement("button");
-  whale.storage.sync.get("data", function(res) {
+  chrome.storage.local.get(['data'], function(res) {
 console.log("change2");
     var val = res.data;
     country = val[idx][0];
@@ -93,11 +79,11 @@ function delTableRowAll() {
 // }
 
 function updateTable() {
-  whale.storage.sync.get("data", function(res) {
+  chrome.storage.local.get(['data'], function(res) {
     var storageVal = res.data;
     console.log("change1");
-    // console.table(res.data);
-    // console.table(storageVal);
+    console.table(res.data);
+    console.table(storageVal);
     if(storageVal) {
       for(var i = 0; i < storageVal.length; i++) {
         //alert("idx: " + i);
@@ -108,20 +94,20 @@ function updateTable() {
 }
 
 function clearStorage() {
-  chrome.storage.sync.set({"data": []}, function() {
+  chrome.storage.local.set({['data']: []}, function() {
     console.log(data); //확인용, 나중에 지울 것
   });
 }
 
 function deleteStorage(idx) {
-  whale.storage.sync.get("data", function(res) {
+  chrome.storage.local.get(['data'], function(res) {
     console.log("change3");
     var a = res.data,
         n = idx;
     a.splice(n, 1);
-    whale.storage.sync.set({"data": a}, function() {
+    chrome.storage.local.set({['data']: a}, function() {
       console.log("change4");
-        // console.table(a); //확인용, 나중에 지울 것
+      console.table(a); //확인용, 나중에 지울 것
     });
   });
 }

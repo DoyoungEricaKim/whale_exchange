@@ -3,7 +3,7 @@
   form.addEventListener('submit', function(evt){
     evt.preventDefault();
     runStorage();
-  })
+  });
 })()
 
 function runStorage() {
@@ -11,17 +11,31 @@ function runStorage() {
       krw = $("#wantKRW").val(),
       date = $("#pdate").val(),
       arr = [country, krw, date];
-  whale.storage.sync.get("data", function(res) {
-    console.log('insert'); //확인용, 나중에 지울 것
-    if(res) {
+      var data;
+      Load(data, arr);
+}
+
+
+function saveResults(data, resultArray){
+  var key = data.toString();
+  key = 'a'.key;
+  chrome.storage.local.set({key : resultArray});
+  console.log('insert2');
+  console.table(a);
+}
+
+function Load(data, arr) {
+  var key = data.toString();
+  key = 'a'.key;
+  chrome.storage.local.get(key, function(res){
+    console.debug('result: ', res.key);
+
+    if(res){
       res.data.push(arr);
       var a = res.data;
-      console.table(res.data); //확인용, 나중에 지울 것
-      console.log('insert4'); //확인용, 나중에 지울 것
-      whale.storage.sync.set({"data": a}, function() {
-          console.log('insert2'); //확인용, 나중에 지울 것
-          console.table(a); //확인용, 나중에 지울 것
-      });
+      console.table(res.data);
+      saveResults(data, a);
     }
   });
+
 }

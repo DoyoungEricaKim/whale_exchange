@@ -1,5 +1,5 @@
-whale.runtime.onInstalled.addListener(function(){
-  whale.storage.sync.get("data", function(res){
+chrome.runtime.onInstalled.addListener(function(){
+  chrome.storage.local.get("data", function(res){
     var stoValue = res.data;
     if(stoValue) {
       for(let i=0; i<stoValue.length; i++){
@@ -14,7 +14,7 @@ whale.runtime.onInstalled.addListener(function(){
   //  mainFunc(success, notibool);
   alert("I'm in active or idle");
   successNoti();
-  whale.notifications.onClicked.addListener(replyPopup);
+  chrome.notifications.onClicked.addListener(replyPopup);
 });
 
 
@@ -22,14 +22,14 @@ whale.runtime.onInstalled.addListener(function(){
   let msg = {
     txt: "hello"
   }
-  whale.tabs.sendMessage(tab.id, msg);
+  chrome.tabs.sendMessage(tab.id, msg);
 */
 
 
 //  mainfunc(success, notibool);
 function getRate(idx) {
 var wantRate;
-whale.storage.sync.get("data", function(res) {
+chrome.storage.local.get("data", function(res) {
     var a = res.data;
     wantRate = a[idx][1];
     alert("want:"+ wantRate);    //나중에 삭제하기
@@ -39,7 +39,7 @@ whale.storage.sync.get("data", function(res) {
 
 function getLimit(idx) {
 var deadline;
-whale.storage.sync.get("data", function(res) {
+chrome.storage.local.get("data", function(res) {
     var a = res.data;
     deadline = a[idx][2];
     alert("day:" + deadline);    //나중에 삭제하기
@@ -87,7 +87,7 @@ function successNoti(){
     message: "설정하신 환율값에 도달했습니다. 예약 내역을 확인해주세요.",
     iconUrl: "img/logo.png"
     };
-  whale.notifications.create('success', option1);
+  chrome.notifications.create('success', option1);
 }
 
 function failNoti(){
@@ -97,7 +97,7 @@ function failNoti(){
     message: "지정한 기간 내 목표한 환율값에 도달하지 못했습니다.",
     iconUrl: "img/logo.png"
     };
-  whale.notifications.create('fail', option2);
+  chrome.notifications.create('fail', option2);
 }
 
 function preNoti(){
@@ -107,12 +107,12 @@ function preNoti(){
     message: "아직 목표한 환율에 도달하지 못했습니다.",
     iconUrl: "img/logo.png"
     };
-  whale.notifications.create('notice', option3);
+  chrome.notifications.create('notice', option3);
 }
 
 function replyPopup(){
-  whale.sidebarAction.show({
-    url: whale.runtime.getURL("check.html"),
+  chrome.sidebarAction.show({
+    url: chrome.runtime.getURL("check.html"),
     reload: true
   });
   console.log("opened check.html");
