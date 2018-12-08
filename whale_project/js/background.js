@@ -167,6 +167,20 @@ function mainFunc(i, success, notibool ){
     alert(ourData[0]);
   };
 
+  var q;
+   var ourRequest = new XMLHttpRequest();
+   ourRequest.open('GET', 'http://api.kimtree.net/exchange/');
+   ourRequest.onload = function(){
+     var ourData =JSON.parse(ourRequest.responseText);
+     console.log(ourData["USD"]);
+   //  alert(ourData);
+     q = ourData["USD"];
+     alert("ecRate22222:" + q);
+   };
+   ourRequest.send();
+   console.log("ecRate:",q);
+   ecRate = q;
+ 
 /*
    $.ajax({
     type: 'GET',
@@ -192,7 +206,8 @@ function mainFunc(i, success, notibool ){
 
 //  alert("현재 환율2: " + ecRate);
   alert("today, deadline, country, preD, wantRate, countCheck, ecRate");
-  alert(today, deadline, country, preD, wantRate, countCheck, ecRate);
+  alert(today + deadline + country + preD + wantRate + countCheck);
+  /*
   while(success!=true){
     if(d > 3){             // Dday가 3일 넘어야만 prenoti 발생
       if( today != deadline){
@@ -242,8 +257,8 @@ function mainFunc(i, success, notibool ){
       }
 
     }
-*/
+
   }
 //    clearAll(); //타임아웃 이후에 remove from storage
-
+*/
 }
