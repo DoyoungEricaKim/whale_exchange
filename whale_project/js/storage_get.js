@@ -45,12 +45,6 @@
         });
      });
     });
-  //
-  // $("#delete_btn").click(function() {
-  //   alert("deleted table");
-  //   var idx = parseInt(document.getElementsByClassName("btn").id.substring(0, 1));
-  //   delTableRow(idx);
-  // });
   }
 })()
 
