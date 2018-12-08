@@ -1,14 +1,17 @@
 whale.runtime.onInstalled.addListener(function(){
-  whale.idle.setDetectionInterval(15);
-  whale.idle.onStateChanged.addListener(function(state){
-    if(state == "idle" || state == "active"){
-      var success = false;
-      var notibool = false;
-    //  mainFunc(success, notibool);
-      alert("I'm in active or idle");
+  whale.storage.sync.get("data", function(res){
+    var stoValue = res.data;
+    if(stoValue) {
+      for(let i=0; i<stoValue.length; i++)
+       getLimit(i);
+       getRate(i);
     }
   });
-  console.log('나온다아아아');
+
+  var success = false;
+  var notibool = false;
+  //  mainFunc(success, notibool);
+  alert("I'm in active or idle");
   successNoti();
   whale.notifications.onClicked.addListener(replyPopup);
 });
@@ -23,10 +26,28 @@ whale.runtime.onInstalled.addListener(function(){
 
 
 //  mainfunc(success, notibool);
+function getRate(idx) {
+var wantRate;
+whale.storage.sync.get("data", function(res) {
+    var a = res.data;
+    wantRate = a[idx][1];
+    alert("want:"+ wantRate);    //나중에 삭제하기
+ });
+ return wantRate;
+}
 
+function getLimit(idx) {
+var deadline;
+whale.storage.sync.get("data", function(res) {
+    var a = res.data;
+    deadline = a[idx][2];
+    alert("day:" + deadline);    //나중에 삭제하기
+ });
+ return deadline;
+}
 
 function calDay() {     //3일전 날짜 계산
-   var x = new Date(); // array deadline 선언값
+   var x = getLimit(); // array deadline 선언값
    var d = new Date(Date.parse(x) - 3 * 1000 * 60 * 60 * 24);
    var day = d.getDate(),
        month = d.getMonth() + 1,
@@ -38,6 +59,7 @@ function calDay() {     //3일전 날짜 계산
     month = '0'+month;
    }
    d = year+ '-' + month + '-' + day;
+   console.log('d-3일은:',d); //나중에 삭제하기
    return d;
 }
 
@@ -53,13 +75,14 @@ function formDate(){ // 오늘 날짜 계산 함수
     month = '0'+month;
   }
   tmp = year+ '-' + month + '-' + day;
+  console.log('오늘은: ',tmp);              //나중에 삭제하기
   return tmp;
 }
 
 function successNoti(){
   var option1 = {
     type: 'basic',
-    title: "목표 환율 달성!!!",
+    title: "1111111111111",
     message: "설정하신 환율값에 도달했습니다. 예약 내역을 확인해주세요.",
     iconUrl: "img/logo.png"
     };
@@ -95,39 +118,22 @@ function replyPopup(){
 }
 
 function countCheck() {
-  var s = document.getElementById("pdate").value; // array에서 가져오기
+  var s = getLimit(); // array에서 가져오기
   var theday = new Date(s);
   var today = new Date();
   var diff = theday.getTime() -  today.getTime();
   var days = Math.floor(diff/(1000*60*60*24) + 1);
+  console.log("d-day까지는 몇일?", days);    //나중에 삭제하기
   return days;
 }
 
-function getInfo() {
-var ecRate, deadline,
-    test3;
-whale.storage.sync.get("data", function(res) {
-    var a = res.data;
-    test = a[n][0];
-    test2 = a[n][1];
-    test3 = a[n][2];
-    /*storage에서 값 받아 올 때 a.[index][0], a.[index][1], a.[index][2]가
-    selectcur, wantkrw, pdate 순서임
-      a = console.log(a[0][0]);
-      console.log(a[0][1]);
-      console.log(a[0][2]);
-    */
-});
-}
-
-
   function mainFunc(success, notibool ){
-    var today = formDate(); // 오늘 날짜 가져오기
-    var deadline = new Date(); // array에서 값 가져오기
-    var ecRate = 1111; // 현재 환율 가져오기 ㅇ
-    var preD = calDay();  //d-3 날짜 계산 함수
-    var wantRate = parseFloat(); //입력받은 input 값을 플로트 형식으로 변경
-    var d = countCheck();  //dDay 몇일 남았는지 계산
+    var today = formDate();          // 오늘 날짜 가져오기
+    var deadline = getLimit() ;      // array에서 값 가져오기
+    var ecRate = 1111;             // 현재 환율 가져오기 ㅇ
+    var preD = calDay();          //d-3 날짜 계산 함수
+    var wantRate = getRate();   //입력받은 input 값을 플로트 형식으로 변경
+    var d = countCheck();         //dDay 몇일 남았는지 계산
 
     while(success!=true){
       if(d > 3){             // Dday가 3일 넘어야만 prenoti 발생
