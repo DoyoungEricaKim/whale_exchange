@@ -1,17 +1,23 @@
 (function(){
   window.onload = function() {
+    var local_val =
     whale.storage.sync.get("data", function(res) {
       var storageVal = res.data;
-      console.table(res.data);
-      console.table(storageVal);
+      console.log("change1");
+      // console.table(res.data);
+      // console.table(storageVal);
       if(storageVal) {
-        for(var i = 0; i < storageVal.length; i++)
+        for(var i = 0; i < storageVal.length; i++) {
+          //alert("idx: " + i);
           addTableRow(i);
+        }
       }
     });
+
+    updateTable();
     $('#clear_btn').on('click', function(){
       alert("Reservations reset");
-      clearStorage();
+    //  clearStorage();
       delTableRowAll();
     });
     $("#delete_btn").click(function() {
@@ -23,21 +29,15 @@
     });
 
     $(document).on('click', ".btn", function() {
-      alert("delete button clicked!!");
-      var tmp = $("button[id$='_btn']").attr('id');
-      var idx = parseInt(tmp.substring(0, 1));
-      alert(idx);
-      delTableRow(idx);
-      //var test = document.getElementById("btn").id.substring(0, 1)
-      //var idx = parseInt(test);
-      //delTableRow(idx);
+      var tmp = $("button[id$='_btn']").attr('id'),
+          idx = parseInt(tmp.substring(0, 1));
+      delTableRow(idx+1);
+      alert('단계1');
+      delTableRowAll();
+      //alert('단계2');
+      updateTable();
+      alert('단계2');
     });
-  //
-  // $("#delete_btn").click(function() {
-  //   alert("deleted table");
-  //   var idx = parseInt(document.getElementsByClassName("btn").id.substring(0, 1));
-  //   delTableRow(idx);
-  // });
   }
 })()
 
@@ -51,6 +51,7 @@ function addTableRow(idx) {
       status = "진행중", nowCur,
       del_btn = document.createElement("button");
   whale.storage.sync.get("data", function(res) {
+console.log("change2");
     var val = res.data;
     country = val[idx][0];
     wantKRW = val[idx][1];
@@ -74,6 +75,7 @@ function addTableRow(idx) {
 
 function delTableRow(idx) {
 	document.getElementById("table").deleteRow(idx);
+  deleteStorage(idx);
 }
 
 function delTableRowAll() {
@@ -83,19 +85,43 @@ function delTableRowAll() {
    }
 }
 
+// function delTableRowBtn() {
+//   var len = document.getElementById("table").rows.length;
+//   for(var i = 1; i < len-1;i++) {
+// 	   document.getElementById("table").deleteRow(1);
+//    }
+// }
+
+function updateTable() {
+  whale.storage.sync.get("data", function(res) {
+    var storageVal = res.data;
+    console.log("change1");
+    // console.table(res.data);
+    // console.table(storageVal);
+    if(storageVal) {
+      for(var i = 0; i < storageVal.length; i++) {
+        //alert("idx: " + i);
+        addTableRow(i);
+      }
+    }
+  });
+}
+
 function clearStorage() {
   chrome.storage.sync.set({"data": []}, function() {
     console.log(data); //확인용, 나중에 지울 것
   });
 }
 
-function deleteStorage() {
+function deleteStorage(idx) {
   whale.storage.sync.get("data", function(res) {
+    console.log("change3");
     var a = res.data,
-        n = 0;
-    a.splice(n, 1); //n번째 값 remove
+        n = idx;
+    a.splice(n, 1);
     whale.storage.sync.set({"data": a}, function() {
-        console.table(a); //확인용, 나중에 지울 것
+      console.log("change4");
+        // console.table(a); //확인용, 나중에 지울 것
     });
   });
 }

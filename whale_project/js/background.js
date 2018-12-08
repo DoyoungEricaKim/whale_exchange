@@ -2,9 +2,10 @@ whale.runtime.onInstalled.addListener(function(){
   whale.storage.sync.get("data", function(res){
     var stoValue = res.data;
     if(stoValue) {
-      for(let i=0; i<stoValue.length; i++)
+      for(let i=0; i<stoValue.length; i++){
        getLimit(i);
        getRate(i);
+     }
     }
   });
 
@@ -59,7 +60,7 @@ function calDay() {     //3일전 날짜 계산
     month = '0'+month;
    }
    d = year+ '-' + month + '-' + day;
-   console.log('d-3일은:',d); //나중에 삭제하기
+   alert('d-3일은:',d); //나중에 삭제하기
    return d;
 }
 
@@ -75,7 +76,7 @@ function formDate(){ // 오늘 날짜 계산 함수
     month = '0'+month;
   }
   tmp = year+ '-' + month + '-' + day;
-  console.log('오늘은: ',tmp);              //나중에 삭제하기
+  alert('오늘은: ',tmp);              //나중에 삭제하기
   return tmp;
 }
 
@@ -123,7 +124,7 @@ function countCheck() {
   var today = new Date();
   var diff = theday.getTime() -  today.getTime();
   var days = Math.floor(diff/(1000*60*60*24) + 1);
-  console.log("d-day까지는 몇일?", days);    //나중에 삭제하기
+  alert("d-day까지는 몇일?", days);    //나중에 삭제하기
   return days;
 }
 
@@ -185,6 +186,6 @@ function countCheck() {
       }
 
     }
-    clearAll(); //타임아웃 이후에 remove from storage
-    return;
+//    clearAll(); //타임아웃 이후에 remove from storage
+
   }
