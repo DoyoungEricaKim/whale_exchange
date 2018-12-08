@@ -32,7 +32,7 @@
     toConfirmPage.addEventListener('submit', function(evt) {
       //var formCheck = $("#reservform");
         evt.preventDefault();
-        window.location.href= "confirm.html";
+    //    window.location.href= "confirm.html";
     })
   }
 })()

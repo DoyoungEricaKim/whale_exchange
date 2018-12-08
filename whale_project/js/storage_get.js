@@ -45,6 +45,12 @@
         });
      });
     });
+  //
+  // $("#delete_btn").click(function() {
+  //   alert("deleted table");
+  //   var idx = parseInt(document.getElementsByClassName("btn").id.substring(0, 1));
+  //   delTableRow(idx);
+  // });
   }
 })()
 
@@ -108,7 +114,6 @@ function _addTableRow(val, idx) {
 
 function delTableRow(idx) {
 	document.getElementById("table").deleteRow(idx);
-  deleteStorage(idx);
 }
 
 function delTableRowAll() {
@@ -134,11 +139,11 @@ function clearStorage() {
   });
 }
 
-function deleteStorage(idx) {
+function deleteStorage() {
   whale.storage.sync.get("data", function(res) {
     var a = res.data,
-        n = idx;
-    a.splice(n, 1);
+        n = 0;
+    a.splice(n, 1); //n번째 값 remove
     whale.storage.sync.set({"data": a}, function() {
     });
   });
