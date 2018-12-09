@@ -1,10 +1,12 @@
 chrome.runtime.onInstalled.addListener(function(){
-
+  // whale.sidebarAction.setBadgeBackgroundColor({
+  //   color: '#EEE1CC',   //
+  // });
       chrome.storage.sync.get("data", function(res){
         var stoValue = res.data;
         if(stoValue) {
           alert(stoValue.length);
-
+          // badge();
           for(var i=0; i<stoValue.length; i++){
             var success = false;
             var notibool = false;
@@ -17,7 +19,7 @@ chrome.runtime.onInstalled.addListener(function(){
       });
 
       // alert("I'm in active or idle");
-  //    successNoti();
+      successNoti();
       chrome.notifications.onClicked.addListener(replyPopup);
    });
 
@@ -38,6 +40,7 @@ function successNoti(){
     iconUrl: "img/logo.png"
     };
   chrome.notifications.create('success', option1);
+  // badge();
 }
 
 function failNoti(){
@@ -137,8 +140,13 @@ function mainFunc(i, success, notibool, val){
   });
   alert("today, deadline, country, preD, wantRate, d, ecRate");
   alert(today + deadline + country + preD + wantRate + d);
-
-
+//
+// function badge() {
+// // TODO: if문 설정하기: noti가 생성됐을때
+//   whale.sidebarAction.setBadgeText({
+//     text: "NEW",
+//   });
+// }
 
 
 /*

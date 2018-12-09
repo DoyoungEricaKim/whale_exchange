@@ -35,7 +35,6 @@
         for(var i = 1; i < len;i++) {
           document.getElementById("table").deleteRow(1);
         }
-        // var storageVal = res.data;
         if(storageVal) {
           for(var i = 0; i < storageVal.length; i++){
             _addTableRow(storageVal, i);

@@ -8,7 +8,7 @@
       "512": "img/logo.png"
     },
     "sidebar_action": {
-      "default_icon": {
+      "default_icon"  : {
          "16": "img/logo.png"
       },
       "default_page": "index.html",
@@ -22,4 +22,4 @@
     },
 
     "permissions": ["tabs", "notifications", "storage", "idle"]
-  }
+}
