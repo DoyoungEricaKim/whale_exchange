@@ -124,7 +124,7 @@ function mainFunc(i, success, notibool, val){
   var d = countCheck(deadline);
   var today = formDate();          // 오늘 날짜 가져오기
   var ecRate;         //dDay 몇일 남았는지 계산
-  chrome.idle.setDetectionInterval(15);
+  chrome.idle.setDetectionInterval(20);
   chrome.idle.onStateChanged.addListener(function(state){
     if(state == "active" || state == "idle"){
      today = formDate();          // 오늘 날짜 가져오기
