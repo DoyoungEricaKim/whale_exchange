@@ -72,6 +72,7 @@ body {
   text-align: right;
 }
 #clear_btn{
+  font-family: "a펜고딕M";
   padding: 0.5em;
   margin: 0.5em;
   font-size: 120%;
@@ -108,10 +109,11 @@ body {
   -webkit-overflow-scrolling: touch;
 }
 th{
-  font-size: :60%;
+  font-size: :100%;
   font-family: "a장미다방";
   font-weight: 150;
   padding: 0.2em;
+  text-align: center;
 }
 tbody{
   font-size: :100%;
@@ -145,6 +147,13 @@ button{
   font-size: 3em;
   font-weight: 250%;
   width: 40%;
+}
+#table{
+  font-size: :100%;
+  font-family: "a펜고딕M";
+  font-weight: 150;
+  padding: 0.2em;
+  text-align: center;
 }
 #no_reserve{
   padding-bottom: 1rem;
