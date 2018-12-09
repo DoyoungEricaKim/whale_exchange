@@ -1,46 +1,56 @@
 body {
-  color:#333;
+  color: #333;
   text-shadow: none;
   font-family: "a펜고딕M";
   text-align: center;
 }
 .masthead {
-  margin-bottom: 2rem;
-  font-weight: 500;
+  margin-bottom: 0.5rem;
+  font-weight: 650;
   font-family: "a장미다방";
-  padding:2.5rem;
   color: #102E4C;
   text-align: center;
+  font-size: 330%;
 }
+
 #conf,
 #checkinfo{
   color: #fff;
   text-shadow: none;
-  font-size: 100%;
+  font-size: 140%;
   background-color: #102E4C;
   border: #102E4C;
 }
 .cover-heading{
   font-size: 250%;
-  font-weight: 350;
-}
-.lead{
-  font-size: 120%;
+  font-weight: 300;
 }
 
 #icon {
-  margin: 1.5rem;
+  margin: 1rem;
   width: 40%;
   height: 40%;
+  align-self: auto;
 }
 #logo {
-  margin-bottom: 1.5rem;
-  width: 20%;
-  height: 100%;
+  width: 30%;
+  height: 85%;
   float:left;
 }
 nav {
-  border-bottom: 1em solid #D0E2F3;
+  border: 1em solid #234C6C;
   background-color: #D0E2F3;
-  
+  border
+}
+.card-body {
+  border : 1.5px solid #102E4C;
+  padding : 1.5em;
+  margin : 0.5em;
+}
+.card-title {
+  font-weight: 300;
+  font-size: 150%;
+}
+.card-text {
+  font-size: 120%;
 }
