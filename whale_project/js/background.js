@@ -3,15 +3,15 @@ chrome.runtime.onInstalled.addListener(function(){
       chrome.storage.sync.get("data", function(res){
         var stoValue = res.data;
         if(stoValue) {
-          alert(stoValue.length);
+    //      alert(stoValue.length);
 
           for(var i=0; i<stoValue.length; i++){
             var success = false;
             var notibool = false;
-            alert("i값은? " + i);
+        //    alert("i값은? " + i);
             // addEventListener ->
             mainFunc(i, success, notibool, stoValue);
-            alert("notibool?" + notibool);
+    //        alert("notibool?" + notibool);
          }
         }
       });
@@ -65,7 +65,7 @@ function replyPopup(){
     url: chrome.runtime.getURL("check.html"),
     reload: true
   });
-  console.log("opened check.html");
+//  console.log("opened check.html");
 }
 
 function calDay(deadline) {     //3일전 날짜 계산
@@ -81,7 +81,7 @@ function calDay(deadline) {     //3일전 날짜 계산
     month = '0'+month;
    }
    d = year+ '-' + month + '-' + day;
-   alert('d-3일은:'+ d); //나중에 삭제하기
+//   alert('d-3일은:'+ d); //나중에 삭제하기
    return d;
 }
 
@@ -97,7 +97,7 @@ function formDate(){ // 오늘 날짜 계산 함수
     month = '0'+month;
   }
   tmp = year+ '-' + month + '-' + day;
-  alert('오늘은:'+ tmp);              //나중에 삭제하기
+//  alert('오늘은:'+ tmp);              //나중에 삭제하기
   return tmp;
 }
 
@@ -109,7 +109,7 @@ function countCheck(deadline) {
   var today = new Date();
   var diff = theday.getTime() - today.getTime();
   var days = Math.floor(diff/(1000*60*60*24) + 1);
-  alert("d-day까지는 몇일?" + days);    //나중에 삭제하기
+//  alert("d-day까지는 몇일?" + days);    //나중에 삭제하기
   return days;
 }
 
@@ -124,7 +124,7 @@ function mainFunc(i, success, notibool, val){
   chrome.idle.setDetectionInterval(20);
   chrome.idle.onStateChanged.addListener(function(state){
     if(state == "active" || state == "idle"){
-     today = formDate();          // 오늘 날짜 가져오기
+//     today = formDate();          // 오늘 날짜 가져오기
 
       var ourRequest = new XMLHttpRequest();
       ourRequest.open('GET', 'http://api.kimtree.net/exchange/');
