@@ -48,8 +48,7 @@ function addTableRow(idx) {
       row = table.insertRow(len), cell1 = row.insertCell(0),
       cell2 = row.insertCell(1), cell3 = row.insertCell(2),
       cell4 = row.insertCell(3), cell5 = row.insertCell(4),
-      cell6 = row.insertCell(5), country, wantKRW, date,
-      status = "진행중", nowCur,
+      country, wantKRW, date, nowCur,
       del_btn = document.createElement("button");
   whale.storage.sync.get("data", function(res) {
     var val = res.data;
@@ -69,8 +68,7 @@ function addTableRow(idx) {
   del_btn.type = "button";
   del_btn.id = idx + "delete_btn";
   del_btn.innerHTML = 'X';
-  cell5.innerHTML = status;
-  cell6.appendChild(del_btn);
+  cell5.appendChild(del_btn);
 }
 function _addTableRow(val, idx) {
 	var len = document.getElementById("table").rows.length,
@@ -78,8 +76,7 @@ function _addTableRow(val, idx) {
       row = table.insertRow(len), cell1 = row.insertCell(0),
       cell2 = row.insertCell(1), cell3 = row.insertCell(2),
       cell4 = row.insertCell(3), cell5 = row.insertCell(4),
-      cell6 = row.insertCell(5), country, wantKRW, date,
-      status = "진행중", nowCur,
+      country, wantKRW, date, nowCur,
       del_btn = document.createElement("button");
     country = val[idx][0];
     wantKRW = val[idx][1];
@@ -96,8 +93,8 @@ function _addTableRow(val, idx) {
   del_btn.type = "button";
   del_btn.id = idx + "delete_btn";
   del_btn.innerHTML = 'X';
-  cell5.innerHTML = status;
-  cell6.appendChild(del_btn);
+  // cell5.innerHTML = status;
+  cell5.appendChild(del_btn);
 }
 
 function delTableRow(idx) {

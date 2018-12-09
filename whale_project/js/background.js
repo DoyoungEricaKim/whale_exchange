@@ -1,18 +1,19 @@
 whale.runtime.onInstalled.addListener(function(){
   whale.notifications.onClicked.addListener(replyPopup);
   whale.idle.setDetectionInterval(20);
-  whale.storage.sync.get("data", function(res){
-    var notibool = false;
-    var stoValue = res.data;
-    whale.idle.onStateChanged.addListener(function(state){
-      if(state == "active" || state == "idle"){
+  whale.idle.onStateChanged.addListener(function(state){
+    if(state == "active" || state == "idle"){
+      whale.storage.sync.get("data", function(res){
+        var notibool = false;
+        var stoValue = res.data;
         if(stoValue) {
+          console.log("if stoVal passed");
           for(var i=0; i< stoValue.length; i++){
             mainFunc(i, notibool, stoValue);
           }
         }
-      }
-    });
+      });
+    }
   });
 });
 
@@ -95,11 +96,11 @@ function countCheck(deadline) {
 }
 
 function deleteStorage(stoValue, i) {
-    var a = stoValue,
-        n = i;
-    a.splice(n, 1); //n번째 값 remove
-    whale.storage.sync.set({"data": a}, function() {
-    });
+  var a = stoValue,
+      n = i;
+      a.splice(n, 1);
+  whale.storage.sync.set({"data": a}, function() {
+    console.table(a);
   });
 }
 
@@ -129,7 +130,7 @@ function mainFunc(i, notibool, val){
               successNoti();
               deleteStorage(val, i);
            } else {
-               if(notiSbool == false) {
+               if(notibool == false) {
                  preNoti();
                }
             }
@@ -143,8 +144,10 @@ function mainFunc(i, notibool, val){
            if(nowCur <= wantRate){
              successNoti();
              deleteStorage(val, i);
-            }
-          }
+           } else {
+             console.log("line 149");
+           }
+        }
         else {
           if(nowCur <=wantRate){
             successNoti();
