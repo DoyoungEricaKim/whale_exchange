@@ -1,0 +1,8 @@
+{
+   "DESCRIPTION": {
+      "message": "Get alarm when the exchange rate matches the rate you wanted"
+   },
+   "NAME": {
+      "message": "Exchange Alarm"
+   }
+}

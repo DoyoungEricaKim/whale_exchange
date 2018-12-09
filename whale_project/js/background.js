@@ -1,34 +1,33 @@
-whale.runtime.onInstalled.addListener(function(){
-//whale.idle.setDetectionInterval(15);
-//  whale.idle.onStateChanged.addListener(function(state){
-//    if(state == "active" || state == "idle"){
-      whale.storage.sync.get("data", function(res){
+chrome.runtime.onInstalled.addListener(function(){
+
+      chrome.storage.sync.get("data", function(res){
         var stoValue = res.data;
         if(stoValue) {
           alert(stoValue.length);
+
           for(var i=0; i<stoValue.length; i++){
             var success = false;
             var notibool = false;
             alert("i값은? " + i);
-            mainFunc(i, success, notibool);
+            // addEventListener ->
+            mainFunc(i, success, notibool, stoValue);
             alert("notibool?" + notibool);
          }
         }
       });
 
-      alert("I'm in active or idle");
+      // alert("I'm in active or idle");
   //    successNoti();
-      whale.notifications.onClicked.addListener(replyPopup);
-//     }
-//   });
- });
+      chrome.notifications.onClicked.addListener(replyPopup);
+   });
+
 
 
 /* table에서 fail/ success background color 변경을 위해 content.js에 message 전송 필요
   let msg = {
     txt: "hello"
   }
-  whale.tabs.sendMessage(tab.id, msg);
+  chrome.tabs.sendMessage(tab.id, msg);
 */
 
 function successNoti(){
@@ -38,7 +37,7 @@ function successNoti(){
     message: "설정하신 환율값에 도달했습니다. 예약 내역을 확인해주세요.",
     iconUrl: "img/logo.png"
     };
-  whale.notifications.create('success', option1);
+  chrome.notifications.create('success', option1);
 }
 
 function failNoti(){
@@ -48,7 +47,7 @@ function failNoti(){
     message: "지정한 기간 내 목표한 환율값에 도달하지 못했습니다.",
     iconUrl: "img/logo.png"
     };
-  whale.notifications.create('fail', option2);
+  chrome.notifications.create('fail', option2);
 }
 
 function preNoti(){
@@ -58,51 +57,20 @@ function preNoti(){
     message: "아직 목표한 환율에 도달하지 못했습니다.",
     iconUrl: "img/logo.png"
     };
-  whale.notifications.create('notice', option3);
+  chrome.notifications.create('notice', option3);
 }
 
 function replyPopup(){
-  whale.sidebarAction.show({
-    url: whale.runtime.getURL("check.html"),
+  chrome.sidebarAction.show({
+    url: chrome.runtime.getURL("check.html"),
     reload: true
   });
   console.log("opened check.html");
 }
 
-
-function getCountry(idx) {
-  var country;
-  whale.storage.sync.get("data", function(res) {
-      var a = res.data;
-      country = a[idx][0];
-      alert("country:" + country);    //나중에 삭제하기
-   });
-   return country;
-}
-
-function getRate(idx) {
-  var wantRate;
-  whale.storage.sync.get("data", function(res) {
-    var a = res.data;
-    wantRate = a[idx][1];
-    alert("want:" + wantRate);    //나중에 삭제하기
- });
- return wantRate;
-}
-
-function getLimit(idx) {
-var deadline;
-whale.storage.sync.get("data", function(res) {
-    var a = res.data;
-    deadline = a[idx][2];
-    alert("day:" + deadline);    //나중에 삭제하기
- });
- return deadline;
-}
-
-function calDay(i) {     //3일전 날짜 계산
-   var x = getLimit(i); // array deadline 선언값
-   var d = new Date(Date.parse(getLimit(i)) - 3 * 1000 * 60 * 60 * 24);
+function calDay(deadline) {     //3일전 날짜 계산
+   var x = deadline; // array deadline 선언값
+   var d = new Date(Date.parse(x) - 3 * 1000 * 60 * 60 * 24);
    var day = d.getDate(),
        month = d.getMonth() + 1,
        year = d.getFullYear();
@@ -135,8 +103,8 @@ function formDate(){ // 오늘 날짜 계산 함수
 
 
 
-function countCheck(i) {
-  var s = getLimit(i); // array에서 가져오기
+function countCheck(deadline) {
+  var s = deadline; // array에서 가져오기
   var theday = new Date(s);
   var today = new Date();
   var diff = theday.getTime() - today.getTime();
@@ -145,28 +113,35 @@ function countCheck(i) {
   return days;
 }
 
-function mainFunc(i, success, notibool ){
-  var idx = i;
+function mainFunc(i, success, notibool, val){
+  var deadline = val[i][2];           // array에서 값 가져오기
+  var country = val[i][0];
+  var preD = calDay(deadline);          //d-3 날짜 계산 함수
+  var wantRate = val[i][1];
+  var d = countCheck(deadline);
   var today = formDate();          // 오늘 날짜 가져오기
-  var deadline = getLimit(i);      // array에서 값 가져오기
-  var country = getCountry(i);
-  var ecRate;             // 현재 환율 가져오기 ㅇ
-  var preD = calDay(i);          //d-3 날짜 계산 함수
-  var wantRate = getRate(i);   //입력받은 input 값을 플로트 형식으로 변경
-  var d = countCheck(i);         //dDay 몇일 남았는지 계산
-  alert("현재까지는 돌았다");
-  alert("parseFloat: " + wantRate);
-  var p = wantRate - 20.5;
-  alert("p는" + p);
+  var ecRate;         //dDay 몇일 남았는지 계산
+  chrome.idle.setDetectionInterval(15);
+  chrome.idle.onStateChanged.addListener(function(state){
+    if(state == "active" || state == "idle"){
+     today = formDate();          // 오늘 날짜 가져오기
 
-  var ourRequest = new XMLHttpRequest();
-  ourRequest.open('GET', 'http://api.kimtree.net/exchange/');
-  ourRequest.onload = function(){
-    var ourData = ourRequest.responseText;
-    console.log(ourData[0]);
-    alert(ourData[0]);
-  };
+      var ourRequest = new XMLHttpRequest();
+      ourRequest.open('GET', 'http://api.kimtree.net/exchange/');
+      ourRequest.onload = function(){
+        var ourData = ourRequest.responseText;
+        console.log(ourData[0]);
+        alert(ourData[0]);
+      };
+    }
+  });
+  alert("today, deadline, country, preD, wantRate, d, ecRate");
+  alert(today + deadline + country + preD + wantRate + d);
 
+
+
+
+/*
   var q;
    var ourRequest = new XMLHttpRequest();
    ourRequest.open('GET', 'http://api.kimtree.net/exchange/');
@@ -180,8 +155,8 @@ function mainFunc(i, success, notibool ){
    ourRequest.send();
    console.log("ecRate:",q);
    ecRate = q;
- 
-/*
+
+
    $.ajax({
     type: 'GET',
     url: "http://api.kimtree.net/exchange/",
@@ -190,25 +165,15 @@ function mainFunc(i, success, notibool ){
       $.each(data, function(key, value){
         container.append(key +': '+value+'</br>');
       });
-
     }
-
     });
 */
 
-/*
 
-  $.get("http://api.kimtree.net/exchange/", function( data ) {
-      ecRate1 = data[country];
-      alert("현재 환율1: " + ecRate1);
-  });
-*/
 
-//  alert("현재 환율2: " + ecRate);
-  alert("today, deadline, country, preD, wantRate, countCheck, ecRate");
-  alert(today + deadline + country + preD + wantRate + countCheck);
+
   /*
-  while(success!=true){
+  while(success!=true){ // idle로 하면 if로 바꿔도 무방할듯!!!!!!해보자!!
     if(d > 3){             // Dday가 3일 넘어야만 prenoti 발생
       if( today != deadline){
         if(ecRate <= wantRate){

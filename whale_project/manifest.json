@@ -2,7 +2,7 @@
     "manifest_version": 2,
     "name": "환전 알람",
     "version": "1.0.0",
-
+    "default_locale": "ko",
     "description": "환율 예약 알람 서비스",
     "icons": {
       "512": "img/logo.png"
