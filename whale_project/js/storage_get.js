@@ -2,20 +2,16 @@
   window.onload = function() {
     whale.storage.sync.get("data", function(res) {
       var storageVal = res.data;
-      // console.table(res.data);
-      // console.table(storageVal);
       if(storageVal) {
         for(var i = 0; i < storageVal.length; i++)
           addTableRow(i);
       }
     });
     $('#clear_btn').on('click', function(){
-      alert("Reservations reset");
       clearStorage();
       delTableRowAll();
     });
     $("#delete_btn").click(function() {
-      alert("Reservation deleted");
       deleteStorage(n);
     });
     $("#table").on("DOMSubtreeModified",function(){
@@ -23,7 +19,6 @@
     });
 
     $(document).on('click', ".btn", function() {
-      alert("button click");
       var tmp = $(this).attr('id'),
           idx = parseInt(tmp.substring(0, 1));
       document.getElementById("table").deleteRow(idx+1);
