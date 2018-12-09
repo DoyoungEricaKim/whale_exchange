@@ -9,7 +9,7 @@ whale.runtime.onInstalled.addListener(function(){
       if(stoValue) {
         console.log(stoValue.length);
         // badge();
-        for(var i=0; i<stoValue.length; i++){
+        for(var i=0; i< stoValue.length; i++){
           var success = false;
           var notibool = false;
           mainFunc(i, success, notibool, stoValue);
@@ -104,11 +104,12 @@ function mainFunc(i, success, notibool, val){
   var deadline = val[i][2];           // array에서 값 가져오기
   var country = val[i][0];
   var preD = calDay(deadline);          //d-3 날짜 계산 함수
-  var wantRate = 1122.5; //val[i][1];
+  var wantRate = val[i][1];
   var nowCur;
   var d = countCheck(deadline);     //dDay 몇일 남았는지 계산
   var today = formDate();          // 오늘 날짜 가져오기
-
+  alert(deadline);
+  alert(preD);
   // whale.idle.onStateChanged.addListener(function(state){
     console.log("line 115, IDLE");
     // if(state == "active" || state == "idle"){
@@ -119,16 +120,16 @@ function mainFunc(i, success, notibool, val){
        nowCur = data[country];
        if(nowCur) {
          console.log("line 118: inside main func cmp" , nowCur);
-         if(success!=true){ // idle로 하면 if로 바꿔도 무방할듯!!!!!!해보자!!
+         while(success!=true){ // idle로 하면 if로 바꿔도 무방할듯!!!!!!해보자!!
            if(d > 3){             // Dday가 3일 넘어야만 prenoti 발생
              if( today != deadline){
                if(nowCur <= wantRate){
                  successNoti();
                  success = true;
-                 // break;
+                  break;
                }
-             } else if( today == preD){    // d-3일인 날이 되었을 때
-                if(nowCur == wantRate){
+             } else if(today == preD){    // d-3일인 날이 되었을 때
+                if(wantRate == nowCur){
                   successNoti();
                   success = true;
                } else {
@@ -139,23 +140,25 @@ function mainFunc(i, success, notibool, val){
                }
              } else {
                 failNoti();
-                // break;
+                break;
              }
           } else {   //Dday가 3일 안넘을때
              if(today != deadline) {
                if(nowCur <= wantRate){
                  successNoti();
                  success = true;
-                 // break;
+                 break;
+               } else {
+                 success = false;
                }
              } else{
                 if(nowCur <= wantRate){
                   successNoti();
                   success = true;
-                  // break;
+                  break;
                 } else{
                     failNoti();
-                    // break;
+                    break;
                   }
               }
            }
