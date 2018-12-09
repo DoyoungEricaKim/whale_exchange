@@ -18,7 +18,7 @@
     },
 
     "background": {
-        "scripts": [ "js/background.js" ]
+        "scripts": [ "js/jquery.min.js",  "js/background.js" ]
     },
 
     "permissions": ["tabs", "notifications", "storage", "idle"]

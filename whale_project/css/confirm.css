@@ -1,3 +1,15 @@
+@font-face {
+  font-family: a펜고딕M;
+  src: url("font/a펜고딕M.ttf");
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: a장미다방;
+  src: url("font/a장미다방.ttf");
+  font-weight: bold;
+}
+
 body {
   color: #333;
   text-shadow: none;
