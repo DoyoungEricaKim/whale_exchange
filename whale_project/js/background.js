@@ -4,9 +4,12 @@ chrome.runtime.onInstalled.addListener(function(){
         var stoValue = res.data;
         if(stoValue) {
           alert(stoValue.length);
+
           for(var i=0; i<stoValue.length; i++){
             var success = false;
             var notibool = false;
+            alert("i값은? " + i);
+            // addEventListener ->
             mainFunc(i, success, notibool, stoValue);
             alert("notibool?" + notibool);
          }
