@@ -9,22 +9,25 @@
   src: url("font/a장미다방.ttf");
   font-weight: bold;
 }
-
 body {
-  color: #333;
+  color:#333;
   text-shadow: none;
   font-family: "a펜고딕M";
   text-align: center;
+}
+#head {
+  border-bottom: 1em solid #D0E2F3;
+  background-color: #D0E2F3;
 }
 .masthead {
   margin-bottom: 0.5rem;
   font-weight: 650;
   font-family: "a장미다방";
+  font-size: 330%;
+  padding: 0.5rem;
   color: #102E4C;
   text-align: center;
-  font-size: 330%;
 }
-
 #conf,
 #checkinfo{
   color: #fff;
@@ -32,32 +35,46 @@ body {
   font-size: 140%;
   background-color: #102E4C;
   border: #102E4C;
+  text-align: center;
 }
 .cover-heading{
-  font-size: 250%;
-  font-weight: 300;
+  font-size: 200%;
+  font-weight: 600;
+  text-decoration-color: #102E4C;
+  text-align: center;
+  font-family: "a펜고딕M";
+}
+.nav-scroller .nav {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  padding: 0.5rem;
+  margin-top: -1px;
+  overflow-x: auto;
+  color: #234C6C;
+  text-align: center;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
 }
 
 #icon {
-  margin: 1rem;
+  margin: 1.5rem;
   width: 40%;
   height: 40%;
-  align-self: auto;
 }
 #logo {
-  width: 30%;
-  height: 85%;
+  margin-bottom: 1.5rem;
+  width: 20%;
+  height: 100%;
   float:left;
 }
-nav {
-  border: 1em solid #234C6C;
-  background-color: #D0E2F3;
-  border
-}
+
 .card-body {
   border : 1.5px solid #102E4C;
-  padding : 1.5em;
+  padding : 0.5em;
   margin : 0.5em;
+  text-align: center;
 }
 .card-title {
   font-weight: 300;

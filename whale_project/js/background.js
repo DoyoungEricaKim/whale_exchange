@@ -55,7 +55,7 @@ function replyPopup(){
     url: whale.runtime.getURL("check.html"),
     reload: true
   });
-  console.log("opened check.html");
+//  console.log("opened check.html");
 }
 
 function calDay(deadline) {     //3일전 날짜 계산
