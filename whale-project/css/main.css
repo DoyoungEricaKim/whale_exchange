@@ -1,24 +1,12 @@
-@font-face {
-  font-family: a펜고딕M;
-  src: url("font/a펜고딕M.ttf");
-  font-weight: bold;
-}
-
-@font-face {
-  font-family: a장미다방;
-  src: url("font/a장미다방.ttf");
-  font-weight: bold;
-}
-
 body {
   color:#333;
   text-shadow: none;
-  font-family: "a펜고딕M";
+  font-family: "Nanum Gothic";
 }
 .masthead {
   margin-bottom: 0.5rem;
   font-weight: 650;
-  font-family: "a장미다방";
+  font-family: "Do Hyeon";
   font-size: 330%;
   padding: 0.5rem;
   color: #102E4C;
@@ -30,7 +18,7 @@ body {
   font-weight: 300;
   text-decoration-color: #102E4C;
   text-align: center;
-  font-family: "a펜고딕M";
+  font-family: "Do Hyeon";
 }
 
 #logo {
@@ -44,7 +32,7 @@ body {
   padding: 1em;
   margin: 0.5em;
   font-size: 120%;
-  font-family: "a펜고딕M";
+  font-family: "Do Hyeon";
   width: 98%;
 }
 
@@ -59,7 +47,7 @@ body {
   text-align: center;
 }
 .custom-select{
- font-family: "a펜고딕M";
+ font-family: "Nanum Gothic";
  padding: 0.5em;
 }
 .nav-underline .nav-link {
@@ -68,11 +56,11 @@ body {
   padding-left: 1rem;
   font-size: 150%;
   color: #6c757d;
-  font-family: "a펜고딕M";
+  font-family: "Do Hyeon";
   text-align: right;
 }
 #clear_btn{
-  font-family: "a펜고딕M";
+  font-family: "Do Hyeon";
   padding: 0.5em;
   margin: 0.5em;
   font-size: 120%;
@@ -92,7 +80,7 @@ body {
 .nav-underline .active {
   font-weight: 500;
   color: #398DA7;
-  font-family: "a펜고딕M";
+  font-family: "Do Hyeon";
   text-align: right;
 }
 .nav-scroller .nav {
@@ -110,7 +98,7 @@ body {
 }
 th{
   font-size: :100%;
-  font-family: "a장미다방";
+  font-family: "Do Hyeon";
   font-weight: 150;
   padding: 0.2em;
   text-align: center;
@@ -118,7 +106,7 @@ th{
 tbody{
   font-size: :100%;
   text-align: center;
-  font-family: "a펜고딕M";
+  font-family: "Nanum Gothic";
   font-weight: 100;
   padding: 0.2em;
 }
@@ -126,7 +114,7 @@ tbody{
 label{
   font-size: 150%;
   text-align: left;
-  font-family: "a장미다방";
+  font-family: "Do Hyeon";
   padding-top: 1.3rem;
   padding-right: 1.3rem;
 }
@@ -141,7 +129,7 @@ button{
 
 .form-control{
   padding-bottom: 1rem;
-  font-family: "a펜고딕M";
+  font-family: "Nanum Gothic";
   padding: 0.5em;
   margin: 0.3em;
   font-size: 3em;
@@ -150,14 +138,14 @@ button{
 }
 #table{
   font-size: :100%;
-  font-family: "a펜고딕M";
+  font-family: "Nanum Gothic";
   font-weight: 150;
   padding: 0.2em;
   text-align: center;
 }
 #no_reserve{
   padding-bottom: 1rem;
-  font-family: "a펜고딕M";
+  font-family: "Do Hyeon";
   padding: 0.5em;
   margin: 0.3em;
   font-size: 150%;

@@ -1,18 +1,7 @@
-@font-face {
-  font-family: a펜고딕M;
-  src: url("font/a펜고딕M.ttf");
-  font-weight: bold;
-}
-
-@font-face {
-  font-family: a장미다방;
-  src: url("font/a장미다방.ttf");
-  font-weight: bold;
-}
 body {
   color:#333;
   text-shadow: none;
-  font-family: "a펜고딕M";
+  font-family: "Nanum Gothic";
   text-align: center;
 }
 #head {
@@ -22,7 +11,7 @@ body {
 .masthead {
   margin-bottom: 0.5rem;
   font-weight: 650;
-  font-family: "a장미다방";
+  font-family: "Do Hyeon";
   font-size: 330%;
   padding: 0.5rem;
   color: #102E4C;
@@ -42,7 +31,7 @@ body {
   font-weight: 600;
   text-decoration-color: #102E4C;
   text-align: center;
-  font-family: "a펜고딕M";
+  font-family: "Do Hyeon";
 }
 .nav-scroller .nav {
   display: -ms-flexbox;
