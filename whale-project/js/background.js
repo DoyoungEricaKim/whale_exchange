@@ -1,6 +1,6 @@
 whale.runtime.onInstalled.addListener(function(){
   whale.notifications.onClicked.addListener(replyPopup);
-  whale.idle.setDetectionInterval(20);
+  whale.idle.setDetectionInterval(300);
   whale.idle.onStateChanged.addListener(function(state){
     if(state == "active" || state == "idle"){
       whale.storage.sync.get("data", function(res){
@@ -22,7 +22,7 @@ function successNoti(){
     type: 'basic',
     title: "목표 환율 달성!!",
     message: "설정하신 환율값에 도달했습니다. 예약 내역을 확인해주세요.",
-    iconUrl: "img/logo.png"
+    iconUrl: "img/logo1.png"
   };
   whale.notifications.create('success', option1);
 }
@@ -32,7 +32,7 @@ function failNoti(){
     type: 'basic',
     title: "목표 환율 달성 실패...",
     message: "지정한 기간 내 목표한 환율값에 도달하지 못했습니다.",
-    iconUrl: "img/logo.png"
+    iconUrl: "img/logo1.png"
   };
   whale.notifications.create('fail', option2);
 }
@@ -42,7 +42,7 @@ function preNoti(){
     type: 'basic',
     title: "환전 알람 종료 3일 전입니다.",
     message: "아직 목표한 환율에 도달하지 못했습니다.",
-    iconUrl: "img/logo.png"
+    iconUrl: "img/logo1.png"
   };
   whale.notifications.create('notice', option3);
 }
@@ -106,7 +106,6 @@ function deleteStorage(stoValue, i) {
 
 
 function mainFunc(i, notibool, val){
- console.log("line 103: inside main func");
   var deadline = val[i][2];
   var country = val[i][0];
   var preD = calDay(deadline);
@@ -135,10 +134,7 @@ function mainFunc(i, notibool, val){
                }
             }
           }
-           //   if(notiSbool == false){
-           //     preNoti();
-           //     notibool = true;
-           //
+
       else{
         if(today != deadline) {
            if(nowCur <= wantRate){

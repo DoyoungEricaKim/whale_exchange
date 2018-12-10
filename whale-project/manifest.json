@@ -1,15 +1,15 @@
 {
     "manifest_version": 2,
     "name": "환전 알람",
-    "version": "1.0.0",
+    "version": "1.0.3",
     "default_locale": "ko",
-    "description": "환율 예약 알람 서비스",
+    "description": "원하는 환율로 떨어지면 알려주는 환율 알람 서비스!",
     "icons": {
-      "512": "img/logo.png"
+      "128": "img/logo1.png"
     },
     "sidebar_action": {
       "default_icon"  : {
-         "16": "img/logo.png"
+         "16": "img/logo1.png"
       },
       "default_page": "index.html",
       "default_title": "환전 알람",
