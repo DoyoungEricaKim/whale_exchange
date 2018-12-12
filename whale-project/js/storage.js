@@ -1,11 +1,8 @@
 (function(){
   whale.storage.sync.get("data", function(res) {
-  // console.log('insert'); //확인용, 나중에 지울 것
   if(!res.data) {
     var a = res.data;
-    // console.log('insert4'); //확인용, 나중에 지울 것
     whale.storage.sync.set({"data": []}, function() {
-        // console.log('insert2'); //확인용, 나중에 지울 것
     });
   }
   });
@@ -22,16 +19,10 @@ function runStorage() {
       date = $("#pdate").val(),
       arr = [country, krw, date];
   whale.storage.sync.get("data", function(res) {
-    console.log('insert'); //확인용, 나중에 지울 것
-    if(res) {
+    if(res.data == res.data || res.data == []) {
       res.data.push(arr);
-      var a = res.data;
-      console.table(res.data); //확인용, 나중에 지울 것
-      console.log('insert4'); //확인용, 나중에 지울 것
-      whale.storage.sync.set({"data": a}, function() {
-          console.log('insert2'); //확인용, 나중에 지울 것
-          console.table(a); //확인용, 나중에 지울 것
-      });
+
+      whale.storage.sync.set(res);
     }
   });
 }

@@ -11,85 +11,89 @@
     <link rel="stylesheet" type="text/css" href="https://fonts.google.com/specimen/Nanum+Gothic">
   </head>
   <body>
-    <nav  id="head" class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
-     <img id="logo" src="img/logo1.png" alt="logo" class="rounded float-left">
-     <h1 class="masthead">환전 알람</h1>
-   </nav>
+    <img src="img/header.png" alt="환전알람" width="100%">
 
-   <div class="nav-scroller bg-white shadow-sm">
-     <nav class="nav nav-underline">
-       <a id="id_reserv" class="nav-link active" href="index.html">목표 환율 </a>
-       <a id="id_check" class="nav-link" href="check.html">예약 확인</a>
-     </nav>
-   </div>
-
-   <article>
-     <div id="reserv_rate_form" class="container">
-       <div class="py-5 text-center">
-         <h2 id="reinfo" class="cover-heading">목표 환율 예약하기</h2>
-         <p class="announcement">
-           ※환율이<b id="boldcal"> 낮은 경우</b>에만 알람이 발생합니다.
-           정확한 환율 알림을 위해<br>
-           아래의 양식을 모두 채워주세요.</p>
-       </div>
-
-
-       <div class="col-md-8 order-md-1">
-         <form id="reservform" class="needs-validation" name="reservform">
-           <div id="ForeignCurrency" class="row">
-             <div class="col-md-6 mb-3">
-               <label class="selectCur">외화 선택</label><br>
-               <select class="custom-select custom-select-lg mb-3" name="selectCur" id="selectCur" required>
-                 <option value="">외화</option>
-                 <option value="USD">미국 USD</option>
-                 <option value="JPY">일본 JPY</option>
-                 <option value="EUR">유럽연합 EUR</option>
-                 <option value="CNY">중국 CNY</option>
-                 <option value="HKD">홍콩 HKD</option>
-               </select>
-             </div>
-           </div>
-           <div class="row">
-             <div id="foreignCurresult_form" class="col-md-6 mb-3">
-               <label class="CurrentRate">현재 환율</label>
-               <input type="text"  class="form-control" id="ForeignCur" value="외화" readonly>
-             </div>
-             <div class="col-md-6 mb-3">
-             </div>
-             <div class="col-md-6 mb-3">
-               <p id="exchangeKRW" class = "announcement" value="KRW" readonly></p>
-
-             </div>
-           </div>
-
-           <div class="row">
-             <div class="col-md-6 mb-3">
-               <label class="form">희망 환율</label>
-               <input type="text" class="form-control" id="ForeignCur1" placeholder="외화" readonly/>
-             </div>
-             <div class="col-md-6 mb-3">
-               <input type="number" id="wantKRW" step="0.01" min="0" class="form-control" name="wantKRW" required />
-             </div>
-           </div>
-
-           <div id="calendar_form" >
-             <div id="deadline">
-               <label class="form">알람 종료일:</label>
-               <input type="date" id="pdate" name="deadline" class="form-control" required />
-             </div>
-           </div>
-
-           <hr class="mb-4">
-           <input id="id_complete_button" class="btn btn-primary btn-lg btn-block" type="submit" value="확인">
-         </form>
-     </div>
+    <div class="nav-scroller bg-white shadow-sm">
+      <nav class="nav nav-underline">
+        <a id="id_reserv" class="nav-link active" href="index.html">목표 환율 </a>
+        <a id="id_check" class="nav-link" href="check.html">예약 확인</a>
+      </nav>
     </div>
 
-   </article>
-   <script src="js/jquery.min.js"></script>
-   <script src="js/bootstrap.min.js"></script>
-   <script src="js/main.js"></script>
-   <script src="js/storage.js"></script>
+    <article>
+      <div id="reserv_rate_form" class="container">
+        <div class="py-5 text-center">
+          <h2 id="reinfo" class="cover-heading">목표 환율 예약하기</h2>
+          <p class="announcement">
+            ※환율이<b id="boldcal"> 낮은 경우</b>에만 알람이 발생합니다.
+            정확한 환율 알림을 위해<br>
+            아래의 양식을 모두 채워주세요.</p>
+        </div>
 
- </body>
+
+        <div class="col-md-8 order-md-1">
+          <form id="reservform" class="needs-validation" name="reservform">
+            <div id="ForeignCurrency" class="row">
+              <div class="col-md-6 mb-3">
+                <label class="selectCur">외화 선택</label><br>
+                <select class="custom-select custom-select-lg mb-3" name="selectCur" id="selectCur" required>
+                  <option value="">외화</option>
+                  <option value="USD">미국 USD</option>
+                  <option value="JPY">일본 JPY</option>
+                  <option value="EUR">유럽연합 EUR</option>
+                  <option value="CNY">중국 CNY</option>
+                  <option value="HKD">홍콩 HKD</option>
+                </select>
+              </div>
+            </div>
+            <div class="row">
+              <div id="foreignCurresult_form" class="col-md-6 mb-3">
+                <label class="CurrentRate">현재 환율</label>
+                <input type="text"  class="form-control" id="ForeignCur" value="외화" readonly>
+              </div>
+              <div class="col-md-6 mb-3">
+              </div>
+              <div class="col-md-6 mb-3">
+                <p id="exchangeKRW" class = "announcement" value="KRW" readonly></p>
+
+              </div>
+            </div>
+
+
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label class="form">희망 환율</label>
+                <input type="text" class="form-control" id="ForeignCur1" placeholder="외화" readonly/>
+              </div>
+              <div class="col-md-6 mb-3">
+                <input type="number" id="wantKRW" step="0.01" min="0" class="form-control" name="wantKRW" required />
+              </div>
+            </div>
+
+
+            <div id="calendar_form" >
+              <div id="deadline">
+                <label class="form">알람 종료일:</label>
+                <input type="date" id="pdate" name="deadline" class="form-control" required />
+              </div>
+            </div>
+
+            <hr class="mb-4">
+            <input id="id_complete_button" class="btn btn-primary btn-lg btn-block" type="submit" value="확인">
+          </form>
+      </div>
+     </div>
+
+    </article>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/storage.js"></script>
+
+
+
+
+
+
+  </body>
 </html>

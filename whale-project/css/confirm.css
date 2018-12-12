@@ -4,19 +4,7 @@ body {
   font-family: "Nanum Gothic";
   text-align: center;
 }
-#head {
-  border-bottom: 1em solid #D0E2F3;
-  background-color: #D0E2F3;
-}
-.masthead {
-  margin-bottom: 0.5rem;
-  font-weight: 650;
-  font-family: "Do Hyeon";
-  font-size: 330%;
-  padding: 0.5rem;
-  color: #102E4C;
-  text-align: center;
-}
+
 #conf,
 #checkinfo{
   color: #fff;
@@ -31,7 +19,7 @@ body {
   font-weight: 600;
   text-decoration-color: #102E4C;
   text-align: center;
-  font-family: "Do Hyeon";
+  font-family: "Nanum Gothic";
 }
 .nav-scroller .nav {
   display: -ms-flexbox;
@@ -51,12 +39,6 @@ body {
   margin: 1.5rem;
   width: 40%;
   height: 40%;
-}
-#logo {
-  margin-bottom: 1.5rem;
-  width: 20%;
-  height: 100%;
-  float:left;
 }
 
 .card-body {

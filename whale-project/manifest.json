@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
     "name": "환전 알람",
-    "version": "1.0.3",
+    "version": "1.0.5",
     "default_locale": "ko",
     "description": "원하는 환율로 떨어지면 알려주는 환율 알람 서비스!",
     "icons": {

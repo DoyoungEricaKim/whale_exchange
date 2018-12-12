@@ -31,7 +31,7 @@
   if(toConfirmPage) {
     toConfirmPage.addEventListener('submit', function(evt) {
         evt.preventDefault();
-        window.location.href= "confirm.html";
+       window.location.href= "confirm.html";
     });
   }
 

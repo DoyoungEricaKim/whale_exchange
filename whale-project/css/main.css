@@ -3,28 +3,12 @@ body {
   text-shadow: none;
   font-family: "Nanum Gothic";
 }
-.masthead {
-  margin-bottom: 0.5rem;
-  font-weight: 650;
-  font-family: "Do Hyeon";
-  font-size: 330%;
-  padding: 0.5rem;
-  color: #102E4C;
-  text-align: center;
-}
-
 .cover-heading{
   font-size: 180%;
   font-weight: 300;
   text-decoration-color: #102E4C;
   text-align: center;
-  font-family: "Do Hyeon";
-}
-
-#logo {
-  width: 30%;
-  height: 85%;
-  float: left;
+  font-family: "Nanum Gothic";
 }
 
 .announcement{
@@ -32,20 +16,10 @@ body {
   padding: 1em;
   margin: 0.5em;
   font-size: 120%;
-  font-family: "Do Hyeon";
+  font-family: "Nanum Gothic";
   width: 98%;
 }
 
-#head {
-  border-bottom: 1em solid #D0E2F3;
-  background-color: #D0E2F3;
-}
-#info {
-  font-size: 1.5em;
-  font-weight: 400;
-  padding-top: 0.75rem;
-  text-align: center;
-}
 .custom-select{
  font-family: "Nanum Gothic";
  padding: 0.5em;
@@ -56,11 +30,11 @@ body {
   padding-left: 1rem;
   font-size: 150%;
   color: #6c757d;
-  font-family: "Do Hyeon";
+  font-family: "Nanum Gothic";
   text-align: right;
 }
 #clear_btn{
-  font-family: "Do Hyeon";
+  font-family: "Nanum Gothic";
   padding: 0.5em;
   margin: 0.5em;
   font-size: 120%;
@@ -80,7 +54,7 @@ body {
 .nav-underline .active {
   font-weight: 500;
   color: #398DA7;
-  font-family: "Do Hyeon";
+  font-family: "Nanum Gothic";
   text-align: right;
 }
 .nav-scroller .nav {
@@ -145,7 +119,7 @@ button{
 }
 #no_reserve{
   padding-bottom: 1rem;
-  font-family: "Do Hyeon";
+  font-family: "Nanum Gothic";
   padding: 0.5em;
   margin: 0.3em;
   font-size: 150%;

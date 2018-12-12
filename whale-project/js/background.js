@@ -1,22 +1,20 @@
 whale.runtime.onInstalled.addListener(function(){
   whale.notifications.onClicked.addListener(replyPopup);
-  whale.idle.setDetectionInterval(20);
-  whale.storage.sync.get("data", function(res){
-    console.log("started");
-    var notibool = false;
-    var stoValue = res.data;
-    console.log(stoValue);
-    whale.idle.onStateChanged.addListener(function(state){
-      if(state == "active" || state == "idle"){
-        console.log("1111111111");
-        if(stoValue) {
-          for(var i=0; i< stoValue.length; i++){
-            console.log("222222222222");
-            mainFunc(i, notibool, stoValue);
-          }
-        }
-      }
-    });
+
+  whale.idle.setDetectionInterval(300);
+  whale.idle.onStateChanged.addListener(function(state){
+    if(state == "active" || state == "idle"){
+      whale.storage.sync.get("data", function(res){
+        var stoValue = res.data;
+
+            if(stoValue == stoValue) {
+              for(var i=0; i< stoValue.length; i++){
+                console.log("222222222222");
+                mainFunc(i, stoValue);
+              }
+            }
+          });
+    }
   });
 });
 
@@ -35,17 +33,20 @@ function successNoti(country, wantRate, deadline, nowCur){
   };
 
   whale.notifications.create('success', option1);
-  chrome.notifications.onClosed.addListener(function() {
-    this.close();
-  });
+
 }
 
-function failNoti(){
+function failNoti(country, wantRate, deadline, nowCur){
   var option2 = {
-    type: 'basic',
+    type: 'list',
     title: "목표 환율 달성 실패...",
     message: "지정한 기간 내 목표한 환율값에 도달하지 못했습니다.",
-    iconUrl: "img/logo.png"
+    iconUrl: "img/logo1.png",
+    requireInteraction: true,
+    items:[{title: "예약 통화 ", message: country },
+           { title: "예약 환율", message: wantRate},
+           { title: "현재 환율", message: nowCur},
+           { title: "예약 종료일", message: deadline + "\n\n\n 알람이 종료되었습니다. "}]
   };
   whale.notifications.create('fail', option2);
 }
@@ -55,7 +56,8 @@ function preNoti(){
     type: 'basic',
     title: "환전 알람 종료 3일 전입니다.",
     message: "아직 목표한 환율에 도달하지 못했습니다.",
-    iconUrl: "img/logo.png"
+    requireInteraction: true,
+    iconUrl: "img/logo1.png"
   };
   whale.notifications.create('notice', option3);
 }
@@ -104,7 +106,6 @@ function countCheck(deadline) {
   var today = new Date();
   var diff = theday.getTime() - today.getTime();
   var days = Math.floor(diff/(1000*60*60*24) + 1);
-  console.log("d-day까지는 몇일?" + days);    //나중에 삭제하기
   return days;
 }
 
@@ -112,13 +113,12 @@ function deleteStorage(stoValue, i) {
     var a = stoValue,
         n = i;
     a.splice(n, 1); //n번째 값 remove
-    whale.storage.sync.set({"data": a}, function() {
+    whale.storage.sync.set({'data': a}, function() {
     });
 }
 
 
-function mainFunc(i, notibool, val){
- console.log("line 103: inside main func");
+function mainFunc(i, val){
   var deadline = val[i][2];
   var country = val[i][0];
   var preD = calDay(deadline);
@@ -134,22 +134,18 @@ function mainFunc(i, notibool, val){
 
     if(nowCur) {
       if(d > 3){
-         if(today != deadline){
            if(nowCur <= wantRate){
              successNoti(country, wantRate, deadline, nowCur);
              deleteStorage(val, i);
            }
-         }
        }
       else if(today == preD){
-            if(wantRate == nowCur){
+            if(nowCur<= wantRate){
               successNoti(country, wantRate, deadline, nowCur);
               deleteStorage(val, i);
-           } else {
-               if(notiSbool == false) {
+            } else {
                  preNoti();
                }
-            }
           }
       else{
         if(today != deadline) {
@@ -158,12 +154,12 @@ function mainFunc(i, notibool, val){
              deleteStorage(val, i);
             }
           }
-        else {
+        else {     //today == deadline
           if(nowCur <=wantRate){
             successNoti(country, wantRate, deadline, nowCur);
             deleteStorage(val, i);
           }else{
-            failNoti();
+            failNoti(country, wantRate, deadline, nowCur);
             deleteStorage(val, i);
           }
         }
